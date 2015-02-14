@@ -1,0 +1,23 @@
+<h1>Lista de deputados</h1>
+
+
+<table class="table table-striped">
+	<tr>
+		<th>Foto</th>
+		<th>Matricula</th>
+		<th>Nome</th>
+		<th>Partido</th>
+		<th>E-mail</th>
+	</tr>
+	<% @deputados.each do |deputado| %>
+		<tr>
+			<td><%= image_tag(deputado.url_foto) %></td>
+			<td><%= deputado.matricula %></td>
+			<td><%= deputado.nome %></td>
+			<td><%= deputado.partido %></td>
+			<td><%= deputado.email %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= will_paginate(@deputados) %> 
