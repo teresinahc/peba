@@ -1,0 +1,23 @@
+<h1><%= @deputado.nome %></h1>
+
+<table class="table">
+	<tr>
+		<th>Beneficiário</th>
+		<th>CPF/CNPJ</th>
+		<th>Valor líquido</th>
+		<th>Número de parcelas</th>
+	</tr>
+	<% @despesas.each do |despesa| %>
+		<tr>
+			<td><%= despesa.beneficiario %></td>
+			<td><%= despesa.cpf_cnpj %></td>
+			<td><%= despesa.valor_liquido %></td>
+			<td><%= despesa.num_parcela %></td>
+		</tr>
+	<% end %>
+</table>
+<%= will_paginate @despesas %> 
+<br>
+<h4 style="float:right;display:inline">
+	Total: <%= number_to_currency(@despesas.sum(:valor_liquido), unit: "R$", separator: ",", delimiter: "") %>
+</h4>

@@ -24,12 +24,18 @@ ActiveRecord::Schema.define(version: 20150214045012) do
   end
 
   create_table "despesas", force: :cascade do |t|
-    t.string   "beneficiario", limit: 255
-    t.string   "cpf_cnpj",     limit: 255
-    t.string   "valor",        limit: 255
-    t.integer  "deputado_id",  limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "matricula",     limit: 255
+    t.string   "beneficiario",  limit: 255
+    t.date     "data_emissao"
+    t.string   "valor_liquido", limit: 255
+    t.string   "cpf_cnpj",      limit: 255
+    t.integer  "num_mes",       limit: 4
+    t.integer  "num_ano",       limit: 4
+    t.integer  "num_parcela",   limit: 4
+    t.integer  "id_cadastro",   limit: 4
+    t.integer  "deputado_id",   limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "despesas", ["deputado_id"], name: "index_despesas_on_deputado_id", using: :btree

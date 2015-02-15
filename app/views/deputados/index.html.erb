@@ -8,6 +8,7 @@
 		<th>Nome</th>
 		<th>Partido</th>
 		<th>E-mail</th>
+		<th>Opções</th>
 	</tr>
 	<% @deputados.each do |deputado| %>
 		<tr>
@@ -16,6 +17,9 @@
 			<td><%= deputado.nome %></td>
 			<td><%= deputado.partido %></td>
 			<td><%= deputado.email %></td>
+			<td>
+				<%= link_to "Ver despesas", deputado,:class=>"btn btn-primary" %>
+			</td>
 		</tr>
 	<% end %>
 </table>
