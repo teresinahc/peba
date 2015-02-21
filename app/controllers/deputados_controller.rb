@@ -8,6 +8,12 @@ class DeputadosController < ApplicationController
      end
   end
 
+  def search
+    @deputados = Deputado.search { fulltext params[:q] }.results
+
+    render action: "index"
+  end
+
   def show
   	@deputado = Deputado.find(params[:id])
   	@despesas = @deputado.despesas

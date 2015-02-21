@@ -1,5 +1,10 @@
 <h1>Lista de deputados</h1>
 
+ <%= form_tag search_deputados_path, method: 'get' do %>
+    <%= label_tag :query %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag :search %>
+  <% end %>
 
 <table class="table table-striped">
 	<tr>
@@ -8,7 +13,6 @@
 		<th>Nome</th>
 		<th>Partido</th>
 		<th>E-mail</th>
-		<th>Despesas</th>
 		<th>Opções</th>
 	</tr>
 	<% @deputados.each do |deputado| %>
@@ -18,7 +22,6 @@
 			<td><%= deputado.nome %></td>
 			<td><%= deputado.partido %></td>
 			<td><%= deputado.email %></td>
-			<td><%= deputado.total_despesas_formatado %></td>
 			<td>
 				<%= link_to "Ver despesas", deputado,:class=>"btn btn-primary" %>
 			</td>
