@@ -16,7 +16,7 @@
 			<td><%= despesa.cpf_cnpj %></td>
 			<td><%= despesa.valor_liquido %></td>
 			<td><%= despesa.num_parcela %></td>
-			<td><%= l despesa.data_emissao %></td>
+			<td><%= l despesa.data_emissao unless despesa.data_emissao.nil? %></td>
 		</tr>
 	<% end %>
 </table>
