@@ -13,3 +13,4 @@
 /tmp
 AnoAtual.*
 config/database.yml
+/solr
