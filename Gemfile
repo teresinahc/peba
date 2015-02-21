@@ -46,3 +46,4 @@ end
 gem 'nokogiri'
 gem 'will_paginate'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'rails-i18n'

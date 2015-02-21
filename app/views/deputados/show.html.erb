@@ -7,6 +7,7 @@
 		<th>CPF/CNPJ</th>
 		<th>Valor líquido</th>
 		<th>Número de parcelas</th>
+		<th></th>
 	</tr>
 	<% @despesas.each do |despesa| %>
 		<tr>
@@ -15,6 +16,7 @@
 			<td><%= despesa.cpf_cnpj %></td>
 			<td><%= despesa.valor_liquido %></td>
 			<td><%= despesa.num_parcela %></td>
+			<td><%= l despesa.data_emissao %></td>
 		</tr>
 	<% end %>
 </table>
