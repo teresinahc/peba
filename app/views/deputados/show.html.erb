@@ -18,4 +18,7 @@
 		</tr>
 	<% end %>
 </table>
-<%= will_paginate @despesas %> 
+
+<div class="paginator-wrapper" >
+	<%= will_paginate @despesas, renderer: BootstrapPagination::Rails %> 
+</div>
