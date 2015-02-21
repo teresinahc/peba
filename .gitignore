@@ -12,3 +12,4 @@
 !/log/.keep
 /tmp
 AnoAtual.*
+config/database.yml
