@@ -20,6 +20,9 @@ default: &default
 development:
   <<: *default
   database: camara_deputados_hack_development
+  password: secret
+  host: 127.0.0.1
+  port: 33060
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
