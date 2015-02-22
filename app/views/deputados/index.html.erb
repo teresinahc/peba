@@ -20,12 +20,12 @@
 		<tr>
 			<td><%= image_tag(deputado.url_foto) %></td>
 			<td><%= deputado.matricula %></td>
-			<td><%= deputado.nome %></td>
+			<td><%= deputado.nome %> - <%= deputado.id %></td>
 			<td><%= deputado.partido %></td>
 			<td><%= deputado.email %></td>
 			<td><%= number_to_currency(deputado.total_despesas) %></td>
 			<td>
-				<%= link_to "Ver despesas", deputado,:class=>"btn btn-primary" %>
+				<%= link_to "Ver despesas", deputado_path(deputado.id),:class=>"btn btn-primary" %>
 			</td>
 		</tr>
 	<% end %>

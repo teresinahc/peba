@@ -5,13 +5,13 @@ class Deputado < ActiveRecord::Base
   searchable do
   	text :nome, :partido, :matricula, :url_foto, :email, :uf
   	text :despesas do
-  		despesas.map { |despesa| [despesa.beneficiario,despesa.cpf_cnpj] }
+  		despesas.map { |despesa| [despesa.beneficiario, despesa.cpf_cnpj] }
   	end
   end
 
   scope :com_total_despesas, -> { 
      joins(:despesas) 
-    .select('*', 'sum(despesas.valor_liquido) as total_despesas')
+    .select('deputados.*', 'sum(despesas.valor_liquido) as total_despesas')
     .group('deputados.nome')
   }
 
