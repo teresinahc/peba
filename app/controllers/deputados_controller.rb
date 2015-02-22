@@ -1,17 +1,10 @@
 class DeputadosController < ApplicationController
+
   def index
-     @deputados = Deputado.maiores_despesas
-                          .paginate(:page=>params[:page], :per_page=>10)
+     @deputados = Deputado.todos(params[:q], params[:page])
      respond_to do |format|
         format.html
-        format.json { render json: @deputados } 
      end
-  end
-
-  def search
-    @deputados = Deputado.search { fulltext params[:q] }.results
-
-    render action: "index"
   end
 
   def show
@@ -20,4 +13,5 @@ class DeputadosController < ApplicationController
                          .mais_novos
                          .paginate(:page=>params[:page], :per_page=>20)
   end
+
 end

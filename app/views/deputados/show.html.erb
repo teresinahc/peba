@@ -14,7 +14,7 @@
 			<td><%= despesa.beneficiario %></td>
 			<td><%= despesa.beneficiario %></td>
 			<td><%= despesa.cpf_cnpj %></td>
-			<td><%= despesa.total_valor_liquido %></td>
+			<td><%= number_to_currency(despesa.valor_liquido) %></td>
 		</tr>
 	<% end %>
 </table>

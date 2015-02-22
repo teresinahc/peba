@@ -1,7 +1,5 @@
 class Deputado < ActiveRecord::Base
   
-  include ActionView::Helpers::NumberHelper
-
   has_many :despesas
   
   searchable do
@@ -25,8 +23,17 @@ class Deputado < ActiveRecord::Base
     com_total_despesas.order('total_despesas desc')
   }
 
-  def total_despesas_formatado
-    number_to_currency(total_despesas)
+  def self.buscar(query)
+    hits           = self.search { fulltext query }.hits
+    deputados_ids  = hits.map { |hit| hit.primary_key }
+
+    # Busca por ID os registros encontrados pela busca
+    self.maiores_despesas.where(id: (deputados_ids))
+  end
+
+  def self.todos(query, current_page, per_page = 10)
+    deputados = query.blank? ? self.maiores_despesas : self.buscar(query)
+    deputados.paginate(:page => current_page, :per_page => per_page)
   end
 
 end
