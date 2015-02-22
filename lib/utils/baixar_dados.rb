@@ -32,6 +32,7 @@ module BaixarDados
         {
           :matricula => despesa.css("nuCarteiraParlamentar").text,
           :beneficiario => despesa.css("txtBeneficiario").text,
+          :descricao => despesa.css("txtDescricao").text,
           :data_emissao=> data_emissao.empty? ? '' : Date.parse(data_emissao),
           :valor_liquido => despesa.css("vlrDocumento").text,
           :cpf_cnpj => despesa.css("txtCNPJCPF").text,

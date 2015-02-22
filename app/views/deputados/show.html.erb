@@ -3,15 +3,15 @@
 <table class="table">
 	<tr>
 		<th>Data</th>
+		<th>Descrição</th>
 		<th>Beneficiário</th>
-		<th>Número de parcelas</th>
 		<th>CPF/CNPJ</th>
 		<th>Valor líquido</th>
 	</tr>
 	<% @despesas.each do |despesa| %>
 		<tr>
 			<td><%= despesa.data_emissao %></td>
-			<td><%= despesa.beneficiario %></td>
+			<td><%= despesa.descricao %></td>
 			<td><%= despesa.beneficiario %></td>
 			<td><%= despesa.cpf_cnpj %></td>
 			<td><%= number_to_currency(despesa.valor_liquido) %></td>
