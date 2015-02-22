@@ -1,36 +1,45 @@
-<h1>Lista de deputados</h1>
+<div class="container">
 
- <%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
-    <%= label_tag :query %>
-    <%= text_field_tag :q, params[:q] %>
-    <%= submit_tag 'Procurar', name: nil %>
-  <% end %>
-
-<table class="table table-striped">
-	<tr>
-		<th>Foto</th>
-		<th>Matricula</th>
-		<th>Nome</th>
-		<th>Partido</th>
-		<th>E-mail</th>
-		<th>Opções</th>
-		<th>Valor</th>
-	</tr>
-	<% @deputados.each do |deputado| %>
-		<tr>
-			<td><%= image_tag(deputado.url_foto) %></td>
-			<td><%= deputado.matricula %></td>
-			<td><%= deputado.nome %> - <%= deputado.id %></td>
-			<td><%= deputado.partido %></td>
-			<td><%= deputado.email %></td>
-			<td><%= number_to_currency(deputado.total_despesas) %></td>
-			<td>
-				<%= link_to "Ver despesas", deputado_path(deputado.id),:class=>"btn btn-primary" %>
-			</td>
-		</tr>
+	<% if params[:q] %>
+	    <hgroup class="mb20">
+			<h1>Resultados da Pesquisa</h1>
+			<h2 class="lead"><strong class="text-danger"><%= @deputados.length %></strong> deputados foram encontrados para a pesquisa <strong class="text-danger"><%= params[:q] %></strong></h2>								
+		</hgroup>
 	<% end %>
-</table>
 
-<div class="paginator-wrapper" >
+	<div class="paginator-wrapper" >
+		<%= will_paginate @deputados, renderer: BootstrapPagination::Rails %> 
+	</div>
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+    	<% @deputados.each do |deputado| %>
+		<article class="search-result row">
+			<div class="col-xs-12 col-sm-12 col-md-2">
+				<a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag(deputado.url_foto, :class=>"img-thumbnail") %></a>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+				<h3><a href="#" title=""><%= deputado.nome %></a></h3>
+				<p>
+					<ul>
+						<li>Partido: <%= deputado.partido %></li>
+						<li>Total de Despesas: <%= number_to_currency(deputado.total_despesas) %></li>
+						<li><%= deputado.email %></li>
+					</ul>
+				</p>						
+                <span>
+                	<%= link_to deputado_path(deputado.id),:class=>"btn btn-primary" do %>
+                		<i class="glyphicon glyphicon-search"></i> Ver despesas
+                	<% end %>
+			</div>
+			<span class="clearfix borda"></span>
+		</article>
+
+		<% end %>
+        	
+
+	</section>
+
+	<div class="paginator-wrapper" >
 	<%= will_paginate @deputados, renderer: BootstrapPagination::Rails %> 
+	</div>
 </div>

@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CamaraDeputadosHack</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>CamaraDeputadosHack</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Deputados</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        	<%= form_tag deputados_path, method: 'get', enforce_utf8: false, :class => "navbar-form navbar-right" do %>
+			    <%= text_field_tag :q, params[:q], :class=>"form-control", :placeholder => "Pesquisar" %>
+			    
+			<% end %>
+        </div>
+      </div>
+    </nav>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<% Deputado.partidos.each do |partido| %>
+						<li>
+							<%= link_to deputados_path(:q=>partido[:nome]) do %>
+								<%= partido[:nome] %>(<%= partido[:quantidade] %>)</a>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<%= yield %>
 
-<%= yield %>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

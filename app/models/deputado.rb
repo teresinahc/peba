@@ -23,6 +23,17 @@ class Deputado < ActiveRecord::Base
     com_total_despesas.order('total_despesas desc')
   }
 
+  scope :partidos, -> {
+    select('distinct(partido), count(*) as quantidade')
+    .group('deputados.partido')
+    .map do |deputado|
+      {
+        :nome => deputado.partido,
+        :quantidade => deputado.quantidade
+      }
+   end
+  }
+
   def self.buscar(query)
     hits           = self.search { fulltext query }.hits
     deputados_ids  = hits.map { |hit| hit.primary_key }
