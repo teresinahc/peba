@@ -13,7 +13,8 @@ module BaixarDados
          :partido => deputado.css("partido").text,
          :matricula => deputado.css("matricula").text,
          :url_foto => deputado.css("urlFoto").text,
-         :email => deputado.css("email").text
+         :email => deputado.css("email").text,
+         :uf => deputado.css("uf").text
        }
     end.each {|deputado| Deputado.create(deputado) } 
   end

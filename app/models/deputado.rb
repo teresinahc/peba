@@ -5,7 +5,7 @@ class Deputado < ActiveRecord::Base
   has_many :despesas
   
   searchable do
-  	text :nome, :partido, :matricula, :url_foto, :email
+  	text :nome, :partido, :matricula, :url_foto, :email, :uf
   	text :despesas do
   		despesas.map { |despesa| [despesa.beneficiario,despesa.cpf_cnpj] }
   	end
