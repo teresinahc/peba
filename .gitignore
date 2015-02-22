@@ -13,4 +13,9 @@
 /tmp
 AnoAtual.*
 config/database.yml
-/solr
+
+/solr/data
+/solr/default
+/solr/development
+/solr/pids
+/solr/test
