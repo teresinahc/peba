@@ -47,4 +47,8 @@ class Deputado < ActiveRecord::Base
     deputados.paginate(:page => current_page, :per_page => per_page)
   end
 
+  def self.top_tres
+    maiores_despesas.limit(3)
+  end
+
 end

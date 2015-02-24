@@ -1,2 +1,39 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="center-box col-md-8 col-md-offset-2" >
+			<div class="logo-box">
+				<%= image_tag 'peba_logo.png' %>
+			</div>
+			<div class="peba-search col-lg-8 col-sm-10">
+	        	<%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
+					<div class="input-group">
+			    		<%= text_field_tag :q, params[:q], :class => "form-control", :placeholder => "Procure por um deputado." %>
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Cavar</button>
+						</span>
+					</div> 
+				<% end %>
+			</div>
+		</div> 
+	</div>
+
+	<div class="row" >
+		<div id="info" class="col-lg-12" >
+			<h4>Deputados com maiores gastos:</h4>
+		</div>
+		<div id="results" class="col-lg-8 col-lg-offset-2" >
+			<div class="row" >
+				<% @deputados.each do |deputado| %>
+				<div class="col-lg-4 item" >
+					<b class="name" >
+						<%= deputado.nome_parlamentar %></br>
+						<%= deputado.partido %> / <%= deputado.uf %>
+					</b>
+					<img src="<%= deputado.url_foto %>" alt="">
+					<b class="amount" ><%= number_to_currency(deputado.total_despesas) %></b>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

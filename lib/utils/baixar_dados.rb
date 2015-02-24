@@ -11,15 +11,16 @@ module BaixarDados
     deputados = doc.css("deputado")
 
     deputados.map do |deputado|
-     {
-       :nome => deputado.css("nome").text,
-       :partido => deputado.css("partido").text,
-       :matricula => deputado.css("matricula").text,
-       :url_foto => deputado.css("urlFoto").text,
-       :email => deputado.css("email").text,
-       :uf => deputado.css("uf").text,
-       :id_cadastro => deputado.css("idDeCadastro").text.to_i
-     }
+       {
+         :nome => deputado.css("nome").text,
+         :nome_parlamentar => deputado.css("nomeParlamentar").text,
+         :partido => deputado.css("partido").text,
+         :matricula => deputado.css("matricula").text,
+         :url_foto => deputado.css("urlFoto").text,
+         :email => deputado.css("email").text,
+         :uf => deputado.css("uf").text,
+         :id_cadastro => deputado.css("idDeCadastro").text.to_i
+       }
     end.each {|deputado| Deputado.create(deputado) } 
   end
 
