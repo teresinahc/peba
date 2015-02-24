@@ -1,3 +1,27 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Style */
+body {
+  background-color: rgba(51,51,51,1);
+}
+
+.container {
+  position: relative;
+  top: 0;
+  padding-top: 7em;
+  padding-bottom: 4em;
+  margin-bottom: 0;
+} 
+.logo-box {
+  width: 200px;
+  display: block;
+  position: relative;
+  margin: 100px auto 30px auto;
+} 
+.peba-search {
+  padding: 1.3em 0.8em 1em;
+  max-width: 44em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  float: none;
+  width: 70%;
+}
