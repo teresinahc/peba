@@ -10,6 +10,7 @@ module BaixarDados
     deputados.map do |deputado|
        {
          :nome => deputado.css("nome").text,
+         :nome_parlamentar => deputado.css("nomeParlamentar").text,
          :partido => deputado.css("partido").text,
          :matricula => deputado.css("matricula").text,
          :url_foto => deputado.css("urlFoto").text,

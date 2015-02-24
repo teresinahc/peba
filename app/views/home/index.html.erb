@@ -16,4 +16,24 @@
 			</div>
 		</div> 
 	</div>
+
+	<div class="row" >
+		<div id="info" class="col-lg-12" >
+			<h4>Deputados com maiores gastos:</h4>
+		</div>
+		<div id="results" class="col-lg-8 col-lg-offset-2" >
+			<div class="row" >
+				<% @deputados.each do |deputado| %>
+				<div class="col-lg-4 item" >
+					<b class="name" >
+						<%= deputado.nome_parlamentar %></br>
+						<%= deputado.partido %> / <%= deputado.uf %>
+					</b>
+					<img src="<%= deputado.url_foto %>" alt="">
+					<b class="amount" ><%= number_to_currency(deputado.total_despesas) %></b>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

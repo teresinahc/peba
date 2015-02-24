@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222222245) do
+ActiveRecord::Schema.define(version: 20150224160045) do
 
   create_table "deputados", force: :cascade do |t|
-    t.string   "nome",        limit: 255
-    t.string   "matricula",   limit: 255
-    t.string   "url_foto",    limit: 255
-    t.string   "partido",     limit: 255
-    t.string   "email",       limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "uf",          limit: 255
-    t.integer  "id_cadastro", limit: 4
+    t.string   "nome",             limit: 255
+    t.string   "matricula",        limit: 255
+    t.string   "url_foto",         limit: 255
+    t.string   "partido",          limit: 255
+    t.string   "email",            limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "uf",               limit: 255
+    t.integer  "id_cadastro",      limit: 4
+    t.string   "nome_parlamentar", limit: 255
   end
 
   create_table "despesas", force: :cascade do |t|
