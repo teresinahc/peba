@@ -6,11 +6,9 @@ namespace :crawler do
   	 begin
 	  	 ActiveRecord::Base.transaction do
 		  	 BaixarDados.setup
-		     BaixarDados.baixar_deputados
-		     BaixarDados.baixar_despesas
 	 	 end
 	 rescue
-	 	ActiveRecord::Base.rollback
+	 	raise ActiveRecord::Rollback
 	 end
   end
 end

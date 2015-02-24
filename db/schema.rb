@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222222245) do
+ActiveRecord::Schema.define(version: 20150224014247) do
 
   create_table "deputados", force: :cascade do |t|
     t.string   "nome",        limit: 255
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20150222222245) do
   end
 
   add_index "despesas", ["deputado_id"], name: "index_despesas_on_deputado_id", using: :btree
+
+  create_table "versao_web_services", force: :cascade do |t|
+    t.string   "url",          limit: 255
+    t.string   "sha1hash",     limit: 255
+    t.date     "data_arquivo"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   add_foreign_key "despesas", "deputados"
 end

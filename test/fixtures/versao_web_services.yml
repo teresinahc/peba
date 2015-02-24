@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  api: MyString
+  hash: MyString
+  data_arquivo: 2015-02-23
+
+two:
+  api: MyString
+  hash: MyString
+  data_arquivo: 2015-02-23
