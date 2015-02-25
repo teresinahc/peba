@@ -10,7 +10,7 @@ class DeputadosController < ApplicationController
   end
 
   def show
-  	@deputado = Deputado.find(params[:id])
+  	@deputado = Deputado.com_total_despesas.find(params[:id])
   	@despesas = @deputado.despesas.todos(params[:q], params[:page])
   end
 
