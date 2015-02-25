@@ -16,13 +16,18 @@
 						<%= image_tag deputado.url_foto  %>
 					</div>
 				</div>
-				<div class="col-lg-9" >
+				<div class="col-lg-5" >
 					<h3 class="name" ><%= deputado.nome_parlamentar %></h3>
 					<ul class="list-unstyled" >
 						<li>Partido: <%= deputado.partido %></li>
 						<li>Estado: <%= deputado.uf %></li>
 						<li><b>Despesas: <%= number_to_currency(deputado.total_despesas) %></b></li>
 					</ul>
+				</div>
+				<div class="col-lg-4" >
+	        		<span class="more-infos btn btn-primary" >
+	        			<i class="glyphicon glyphicon-search"></i> Ver despesas
+	        		</span>
 				</div>
 			</a>
 		<% end %>

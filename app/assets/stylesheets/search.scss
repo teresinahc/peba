@@ -111,6 +111,15 @@ body {
 		color: #FFF;
 		font-size: 17px;
 	}
+	.more-infos {
+		margin-top: 70px;
+		background: #FDCA01;
+		color: #333;
+		border-color: #FDCA01;
+		&:hover{
+			background: #D1A805;
+		}  
+	}
 }
 
 .paginator-wrapper {
