@@ -1,7 +1,9 @@
 <div class="row">
 	<div class="center-box col-md-8 col-md-offset-2" >
 		<div class="logo-box">
-			<%= image_tag 'peba_logo.png' %>
+			<a href="<%= root_path %>" >
+				<%= image_tag 'peba_logo.png' %>
+			</a>
 		</div>
 		<div class="peba-search col-lg-8 col-sm-10">
         	<%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>

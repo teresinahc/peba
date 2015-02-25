@@ -48,6 +48,9 @@ body {
   color:#FFF;
   text-align:center;
   margin:30px 0;
+  b {
+  	color: #FDCA01;
+  }
 }
 
 #results { 
@@ -77,13 +80,58 @@ body {
 	border-radius: 75px;
 	display: inline-block;
 	margin:10px 0;
+	text-align: center;
 }
 
 #credits {
 	text-align:center;
+	padding-bottom: 20px;
 	a {
 		display: inline-block;
 		margin: 0 10px;
 		color: #999;
 	}
+}
+
+#search-results {
+	padding-bottom: 30px;
+}
+
+.search-result {
+	display: block;
+	padding: 30px;
+	border-bottom:1px solid #444;
+	&:hover {
+		background: #444;
+	}
+	.name{
+		color: #FDCA01;
+	}
+	ul li {
+		color: #FFF;
+		font-size: 17px;
+	}
+}
+
+.paginator-wrapper {
+	text-align: center;
+}
+
+.pagination {
+	.active {
+		&:hover {
+			span{
+				background: #FDCA01;
+				border-color: #FDCA01; 
+			}
+		}
+		span {
+			background: #FDCA01;
+			border-color: #FDCA01; 
+		}
+	} 
+}
+
+.pagination a, .pagination a span {
+	color: #333;
 }
