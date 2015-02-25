@@ -5,4 +5,8 @@ class Despesa < ActiveRecord::Base
 
   belongs_to :deputado
 
+  def self.todos(query, current_page, per_page = 10)
+    mais_novos.paginate(:page => current_page, :per_page => per_page)
+  end
+
 end

@@ -9,9 +9,7 @@ class DeputadosController < ApplicationController
 
   def show
   	@deputado = Deputado.find(params[:id])
-  	@despesas = @deputado.despesas
-                         .mais_novos
-                         .paginate(:page=>params[:page], :per_page=>20)
+  	@despesas = @deputado.despesas.todos(params[:q], params[:page])
   end
 
 end

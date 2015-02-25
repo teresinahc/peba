@@ -15,12 +15,20 @@ class Deputado < ActiveRecord::Base
     .group('deputados.nome')
   }
 
+  scope :aleatorios, -> {
+    com_total_despesas.order('RAND()')
+  }
+
   scope :com_despesas, -> {
     com_total_despesas.includes(:despesas)
   }
 
   scope :maiores_despesas, -> {
     com_total_despesas.order('total_despesas desc')
+  }
+
+  scope :top_tres, -> {
+    aleatorios.limit(3)
   }
 
   scope :partidos, -> {
@@ -45,10 +53,6 @@ class Deputado < ActiveRecord::Base
   def self.todos(query, current_page, per_page = 10)
     deputados = query.blank? ? self.maiores_despesas : self.buscar(query)
     deputados.paginate(:page => current_page, :per_page => per_page)
-  end
-
-  def self.top_tres
-    maiores_despesas.limit(3)
   end
 
 end
