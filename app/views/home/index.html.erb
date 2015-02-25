@@ -1,25 +1,10 @@
 <div class="container">
-	<div class="row">
-		<div class="center-box col-md-8 col-md-offset-2" >
-			<div class="logo-box">
-				<%= image_tag 'peba_logo.png' %>
-			</div>
-			<div class="peba-search col-lg-8 col-sm-10">
-	        	<%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
-					<div class="input-group">
-			    		<%= text_field_tag :q, params[:q], :class => "form-control", :placeholder => "Procure por um deputado." %>
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">Cavar</button>
-						</span>
-					</div> 
-				<% end %>
-			</div>
-		</div> 
-	</div>
+	
+	<%= render 'partials/search_form' %>
 
 	<div class="row" >
 		<div id="info" class="col-lg-12" >
-			<h4>Deputados com maiores gastos:</h4>
+			<h4>Cavada aleatória:</h4>
 		</div>
 		<div id="results" class="col-lg-8 col-lg-offset-2" >
 			<div class="row" >
@@ -29,7 +14,9 @@
 						<%= deputado.nome_parlamentar %></br>
 						<%= deputado.partido %> / <%= deputado.uf %>
 					</b>
-					<img src="<%= deputado.url_foto %>" alt="">
+					<div class="circle" >
+						<img src="<%= deputado.url_foto %>" alt="">
+					</div>
 					<b class="amount" ><%= number_to_currency(deputado.total_despesas) %></b>
 				</div>
 				<% end %>

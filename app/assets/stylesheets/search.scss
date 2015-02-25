@@ -16,6 +16,69 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Style */
+body {
+  background-color: rgba(51,51,51,1);
+}
+
+.container {
+  position: relative;
+  top: 0;
+  padding-top: 7em;
+  padding-bottom: 4em;
+  margin-bottom: 0;
+} 
+.logo-box {
+  width: 200px;
+  display: block;
+  position: relative;
+  margin: 30px auto 30px auto;
+} 
+.peba-search {
+  padding: 1.3em 0.8em 1em;
+  max-width: 44em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  float: none;
+  width: 70%;
+}
+
+#info {
+  color:#FFF;
+  text-align:center;
+  margin:30px 0;
+}
+
+#results { 
+  .item { 
+    text-align:center;
+    b {
+      display:block
+    }
+    img {
+      display: inline-block;
+      margin: 10px auto;
+    }
+    .name {
+      color: #FDCA01;
+    }
+    .amount {
+      color:#FFF;
+    }
+  }
+}
+
+.circle {
+	height:150px;
+	width: 150px;
+	overflow: hidden;
+	background:#FFF;
+	border-radius: 75px;
+	display: inline-block;
+	margin:10px 0;
+}
+
 #credits {
 	text-align:center;
 	a {

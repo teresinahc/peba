@@ -19,7 +19,7 @@
 stopworda
 stopwordb
 
-#Standard english stop words taken from Lucene's StopAnalyzer
+#####
 a
 à
 agora
@@ -278,3 +278,17 @@ vindo
 vir
 vos
 vós
+
+# Stopwords do PEBA 
+
+despesa
+despesas
+gasto
+gastos
+deputado
+deputados
+parlamentar
+parlamentares
+cpf
+cnpj
+número

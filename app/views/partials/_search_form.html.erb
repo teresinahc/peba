@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="center-box col-md-8 col-md-offset-2" >
+		<div class="logo-box">
+			<%= image_tag 'peba_logo.png' %>
+		</div>
+		<div class="peba-search col-lg-8 col-sm-10">
+        	<%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
+				<div class="form-group" >
+					<div class="input-group">
+			    		<%= text_field_tag :q, params[:q], :class => "form-control", :placeholder => "Procure por um deputado" %>
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Cavar</button>
+						</span>
+					</div> 
+					<p class="help-block">Seja objetivo, por exemplo: Joãozinho do PT</p>
+				</div>
+			<% end %>
+		</div>
+	</div> 
+</div>
