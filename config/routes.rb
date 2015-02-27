@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   
   root 'home#index'
-
-  resources :deputados do
-    collection { get :search }
-  end
+  get  '/aleatorio' => 'home#aleatorio', as: 'aletaroio'
+  
+  resources :deputados
 
 end
