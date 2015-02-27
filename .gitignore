@@ -13,6 +13,7 @@
 /tmp
 AnoAtual.*
 config/database.yml
+config/secrets.yml
 
 /solr/data
 /solr/default
