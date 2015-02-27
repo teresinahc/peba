@@ -14,6 +14,7 @@
 AnoAtual.*
 config/database.yml
 config/secrets.yml
+vendor/bundle
 
 /solr/data
 /solr/default
