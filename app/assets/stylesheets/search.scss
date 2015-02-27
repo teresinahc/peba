@@ -16,6 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@media only screen and (max-width: 600px) {
+	.search-result: {
+		text-align:center
+	};
+}
+
 /* Style */
 body {
   background-color: rgba(51,51,51,1);
@@ -193,4 +199,5 @@ body {
 
 #social-share {
 	text-align:center;
+	padding-top: 30px;
 }
