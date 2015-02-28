@@ -3,11 +3,12 @@
 		<%= image_tag 'peba_logo.png' %>
 	</a>
 </div>
-<div class="container">
+<div id="document" class="container">
 
 	<div id="description" class="row" >
 		<div class="col-lg-12" >
 			<h1 class="lead" ><%= @deputado.nome %></h1>	
+			<small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
 			<div class="row" >
 				<div class="col-lg-2 col-lg-offset-4" >
 					<div class="circle" >

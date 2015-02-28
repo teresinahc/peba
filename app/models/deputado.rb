@@ -55,4 +55,8 @@ class Deputado < ActiveRecord::Base
     deputados.paginate(:page => current_page, :per_page => per_page)
   end
 
+  def data_ultima_atualizacao
+    despesas.mais_novos.first.updated_at
+  end
+
 end
