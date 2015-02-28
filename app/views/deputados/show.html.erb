@@ -30,7 +30,7 @@
 						<li>Partido: <%= @deputado.partido %></li>
 						<li>Estado: <%= @deputado.uf %></li>
 						<li>Email: <a href="mailto:<%= @deputado.email %>" ><%= @deputado.email %></a></li>
-						<li><b>Total gasto: <%= number_to_currency(@deputado.total_despesas) %></b></li>
+						<li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(@deputado.total_despesas) %></b></li>
 					</ul>
 				</div>
 			</div>	
