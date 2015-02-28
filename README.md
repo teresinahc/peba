@@ -1,7 +1,7 @@
 ===== 
 PEBA 
 =====
-O PEBA possui um mecanismo para obter os dados a partir dos WebServices de sites de dados públicos e indexa-los através do uso de softwares livres usando uma implementação denominada crawler.  Uma vez que estes dados são indexados eles se encontram disponĩveis para visualização e pesquisa a partir de uma aplicação web que pode ser acessado em qualquer navegador.
+O Peba é um sistema que indexa em fonte única informações relacionadas às despesas de vários entidades governamentais com suporte para filtros e buscas avançadas.
 
 ---
 Softwares utilizados
