@@ -50,3 +50,4 @@ gem 'rails-i18n'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'will_paginate-bootstrap'
+gem "chartkick"
