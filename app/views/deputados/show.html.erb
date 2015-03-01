@@ -52,6 +52,8 @@
 						<th>Beneficiário</th>
 						<th>CPF/CNPJ</th>
 						<th>Valor líquido</th>
+						<th>Valor de Glosa</th>
+						<th>Valor do documento</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -62,6 +64,8 @@
 							<td><%= despesa.beneficiario %></td>
 							<td><%= despesa.cpf_cnpj %></td>
 							<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
 						</tr>
 					<% end %>
 				</tbody>
