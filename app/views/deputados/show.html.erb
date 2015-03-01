@@ -37,13 +37,25 @@
 		</div>
 	</div>
 
-	<% @despesas.tipos.each do |tipo| %>
-		<%= tipo %>
-	<% end %>
-
+	
 	<div id="expenses" class="row" >
 		<div class="col-lg-12" >
-			<h3>Despesas:</h3>
+			<h3>Classificações de Despesas:</h3>
+			<table class="table">
+				<tr>
+					<th>Descrição</th>
+					<th>Valor líquido</th>
+					<th>Valor total</th>
+				</tr>
+				<% @despesas.totais_por_descricao.each do |tipo| %>
+					<tr>
+						<td><%= tipo[:descricao] %></td>
+						<td><%= number_to_currency(tipo[:total_liquido]) %></td>
+						<td><%= number_to_currency(tipo[:total]) %></td>
+						
+					</tr>
+				<% end %>
+			</table>
 			<table>
 				<thead>
 					<tr>
