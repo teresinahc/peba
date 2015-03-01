@@ -58,36 +58,10 @@
 					</tr>
 				<% end %>
 			</table>
-			<table>
-				<thead>
-					<tr>
-						<th>Data</th>
-						<th>Descrição</th>
-						<th>Beneficiário</th>
-						<th>CPF/CNPJ</th>
-						<th>Valor líquido</th>
-						<th>Valor de Glosa</th>
-						<th>Valor do documento</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @despesas.each do |despesa| %>
-						<tr>
-							<td><%= despesa.data_emissao %></td>
-							<td><%= despesa.descricao %></td>
-							<td><%= despesa.beneficiario %></td>
-							<td><%= despesa.cpf_cnpj %></td>
-							<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
-							<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
-							<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>	
 		</div>
 	</div>
 
 	<div class="paginator-wrapper" >
-		<%= will_paginate @despesas, renderer: BootstrapPagination::Rails %> 
+		<%= link_to "Ver detalhes das despesas", deputado_despesas_path(@deputado), :class => "btn btn-primary" %>
 	</div>
 </div>

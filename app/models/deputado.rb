@@ -56,7 +56,7 @@ class Deputado < ActiveRecord::Base
   end
 
   def data_ultima_atualizacao
-    despesas.mais_novos.first.updated_at
+    !despesas.empty? ? despesas.mais_novos.first.updated_at : updated_at
   end
 
 end

@@ -1,0 +1,69 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<div id="logo" >
+	<a href="<%= root_path %>">
+		<%= image_tag 'peba_logo.png' %>
+	</a>
+</div>
+<div id="document" class="container">
+
+	<div id="description" class="row" >
+		<div class="col-lg-12" >
+			<h1 class="lead" ><%= @deputado.nome %></h1>	
+			<small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
+			
+			<div class="row" >
+				<div class="col-lg-2 col-lg-offset-4" >
+					<div class="circle" >
+						<img src="<%= @deputado.url_foto %>" alt="">
+					</div>
+				</div>
+				<div class="col-lg-6" >
+					<ul class="list-unstyled" >
+						<li>Partido: <%= @deputado.partido %></li>
+						<li>Estado: <%= @deputado.uf %></li>
+						<li>Email: <a href="mailto:<%= @deputado.email %>" ><%= @deputado.email %></a></li>
+						<li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(@deputado.total_despesas) %></b></li>
+					</ul>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+	
+	<div id="expenses" class="row" >
+		<div class="col-lg-12" >
+			<h3>Classificações de Despesas:</h3>
+			<% @despesas.classificacoes.each do |classificao| %>
+				<h3><%= classificao %></h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Data</th>
+							<th>Beneficiário</th>
+							<th>CPF/CNPJ</th>
+							<th>Valor líquido</th>
+							<th>Valor de Glosa</th>
+							<th>Valor do documento</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @despesas.por_classificacao(classificao).each do |despesa| %>
+							<tr>
+								<td><%= despesa.data_emissao %></td>
+								<td><%= despesa.beneficiario %></td>
+								<td><%= despesa.cpf_cnpj %></td>
+								<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
+								<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
+								<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>	
+			<% end %>
+			
+		</div>
+	</div>
+
+	
+</div>
