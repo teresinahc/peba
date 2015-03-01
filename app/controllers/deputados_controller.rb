@@ -1,7 +1,4 @@
 class DeputadosController < ApplicationController
-
-  layout 'search'
-
   def index
      @deputados = Deputado.todos(params[:q], params[:page])
      respond_to do |format|

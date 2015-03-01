@@ -1,7 +1,4 @@
 class HomeController < ApplicationController
-
-  layout 'search'
-
   def index
     @page_info = {
       title: 'Indexador de Dados Públicos',
