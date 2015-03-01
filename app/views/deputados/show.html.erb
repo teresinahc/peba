@@ -37,6 +37,10 @@
 		</div>
 	</div>
 
+	<% @despesas.tipos.each do |tipo| %>
+		<%= tipo %>
+	<% end %>
+
 	<div id="expenses" class="row" >
 		<div class="col-lg-12" >
 			<h3>Despesas:</h3>
