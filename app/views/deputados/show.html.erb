@@ -1,3 +1,5 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
 <div id="logo" >
 	<a href="<%= root_path %>">
 		<%= image_tag 'peba_logo.png' %>
@@ -37,9 +39,25 @@
 		</div>
 	</div>
 
+	
 	<div id="expenses" class="row" >
 		<div class="col-lg-12" >
-			<h3>Despesas:</h3>
+			<h3>Classificações de Despesas:</h3>
+			<table class="table">
+				<tr>
+					<th>Descrição</th>
+					<th>Valor líquido</th>
+					<th>Valor total</th>
+				</tr>
+				<% @despesas.totais_por_descricao.each do |tipo| %>
+					<tr>
+						<td><%= tipo[:descricao] %></td>
+						<td><%= number_to_currency(tipo[:total_liquido]) %></td>
+						<td><%= number_to_currency(tipo[:total]) %></td>
+						
+					</tr>
+				<% end %>
+			</table>
 			<table>
 				<thead>
 					<tr>
@@ -48,6 +66,8 @@
 						<th>Beneficiário</th>
 						<th>CPF/CNPJ</th>
 						<th>Valor líquido</th>
+						<th>Valor de Glosa</th>
+						<th>Valor do documento</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -58,6 +78,8 @@
 							<td><%= despesa.beneficiario %></td>
 							<td><%= despesa.cpf_cnpj %></td>
 							<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
 						</tr>
 					<% end %>
 				</tbody>

@@ -10,7 +10,7 @@ class Deputado < ActiveRecord::Base
   end
 
   scope :com_total_despesas, -> { 
-     joins(:despesas) 
+     joins("LEFT JOIN despesas ON despesas.deputado_id = deputados.id") 
     .select('deputados.*', 'sum(despesas.valor_liquido) as total_despesas')
     .group('deputados.nome')
   }

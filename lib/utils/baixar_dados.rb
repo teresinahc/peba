@@ -19,7 +19,7 @@ module BaixarDados
          :url_foto => deputado.css("urlFoto").text,
          :email => deputado.css("email").text,
          :uf => deputado.css("uf").text,
-         :id_cadastro => deputado.css("idDeCadastro").text.to_i
+         :id_cadastro => deputado.css("ideCadastro").text.to_i
        }
     end.each {|deputado| Deputado.create(deputado) } 
   end
@@ -35,15 +35,18 @@ module BaixarDados
     despesas = doc.css("DESPESA")
 
     despesas.map do |despesa|
-      deputado = Deputado.find_by_matricula(despesa.css("nuCarteiraParlamentar").text)
+      deputado = Deputado.find_by_id_cadastro(despesa.css("ideCadastro").text)
       data_emissao = despesa.css("datEmissao").text
       unless deputado.nil?
         {
           :matricula => despesa.css("nuCarteiraParlamentar").text,
+          :nome_parlamentar => despesa.css("txNomeParlamentar").text,
           :beneficiario => despesa.css("txtBeneficiario").text,
           :descricao => despesa.css("txtDescricao").text,
           :data_emissao=> data_emissao.empty? ? '' : Date.parse(data_emissao),
-          :valor_liquido => despesa.css("vlrDocumento").text,
+          :valor_documento => despesa.css("vlrDocumento").text,
+          :valor_liquido => despesa.css("vlrLiquido").text,
+          :valor_glosa => despesa.css("vlrGlosa").text,
           :cpf_cnpj => despesa.css("txtCNPJCPF").text,
           :id_cadastro => despesa.css("ideCadastro").text.to_i,
           :num_mes => despesa.css("numMes").text.to_i,
@@ -57,12 +60,12 @@ module BaixarDados
 
   def self.setup
     system "rm AnoAtual.*"
-    if VersaoWebService.atualizado?("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
+    # if VersaoWebService.atualizado?("http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterDeputados")
       self.baixar_deputados
-    end
-    if VersaoWebService.atualizado?("http://www.camara.gov.br/cotas/AnoAtual.zip")
+    # end
+    # if VersaoWebService.atualizado?("http://www.camara.gov.br/cotas/AnoAtual.zip")
       self.baixar_despesas
-    end
+    # end
   end
 
 end
