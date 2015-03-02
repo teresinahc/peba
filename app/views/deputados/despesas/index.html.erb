@@ -40,19 +40,19 @@
 					<div class="col-lg-3" >
 						<div class="form-group" >
 							<label>Categoria</label>
-							<%= select_tag('descricao',  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), class: 'form-control', onchange: 'this.form.submit()') %>
+							<%= select_tag('descricao',  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), include_blank: 'Todos', class: 'form-control', onchange: 'this.form.submit()') %>
 						</div>
 					</div>
 					<div class="col-lg-2" >
 						<div class="form-group" >
 							<label for="">Ano</label>
-							<%= select_year(params[:num_ano].to_i, {start_year: 2015, end_year: Date.today.year}, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
+							<%= select_year(params[:num_ano].to_i, {start_year: 2015, end_year: Date.today.year, prompt: 'Todos'}, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
 						</div>
 					</div>
 					<div class="col-lg-2" >
 						<div class="form-group" >
 							<label for="">Mês</label>
-							<%= select_month(params[:num_mes].to_i, {}, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
+							<%= select_month(params[:num_mes].to_i, {prompt: 'Todos'}, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
 						</div>
 					</div>
 				<% end %>
