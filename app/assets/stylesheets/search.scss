@@ -53,7 +53,7 @@ body {
 #info {
   color:#FFF;
   text-align:center;
-  margin:30px 0;
+  margin:15px 0;
   b {
   	color: #FDCA01;
   }
@@ -200,6 +200,7 @@ body {
 #social-share {
 	text-align:center;
 	padding-top: 30px;
+	padding-bottom: 15px;
 }
 
 #update-info{
@@ -219,4 +220,14 @@ body {
 #social {
 	text-align: center;
 	padding:10px 0;
+}
+
+#video-wrapper{
+	width: 502px;
+	height: 282px;
+	margin: 0 auto;
+}
+
+#filter label {
+	color: #FFF;
 }

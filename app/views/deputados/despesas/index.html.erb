@@ -33,35 +33,55 @@
 	
 	<div id="expenses" class="row" >
 		<div class="col-lg-12" >
-			<h3>Classificações de Despesas:</h3>
-			<% @despesas.classificacoes.each do |classificao| %>
-				<h3><%= classificao %></h3>
-				<table>
-					<thead>
-						<tr>
-							<th>Data</th>
-							<th>Beneficiário</th>
-							<th>CPF/CNPJ</th>
-							<th>Valor líquido</th>
-							<th>Valor de Glosa</th>
-							<th>Valor do documento</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @despesas.por_classificacao(classificao).each do |despesa| %>
-							<tr>
-								<td><%= despesa.data_emissao %></td>
-								<td><%= despesa.beneficiario %></td>
-								<td><%= despesa.cpf_cnpj %></td>
-								<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
-								<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
-								<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>	
-			<% end %>
+			<h3>Detalhamento de Despesas:</h3>
 			
+			<div id="filter" class="row" >
+				<%= form_tag(deputado_despesas_path(@deputado.id), class: 'inline-form', method: 'get') do |f| %>
+					<div class="col-lg-3" >
+						<div class="form-group" >
+							<label>Categoria</label>
+							<%= select_tag('descricao',  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), class: 'form-control', onchange: 'this.form.submit()') %>
+						</div>
+					</div>
+					<div class="col-lg-2" >
+						<div class="form-group" >
+							<label for="">Ano</label>
+							<%= select_year(params[:num_ano].to_i, {start_year: 2015, end_year: Date.today.year}, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
+						</div>
+					</div>
+					<div class="col-lg-2" >
+						<div class="form-group" >
+							<label for="">Mês</label>
+							<%= select_month(params[:num_mes].to_i, {}, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Beneficiário</th>
+						<th>CPF/CNPJ</th>
+						<th>Valor líquido</th>
+						<th>Valor de Glosa</th>
+						<th>Valor do documento</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @despesas.each do |despesa| %>
+						<tr>
+							<td><%= despesa.data_emissao %></td>
+							<td><%= despesa.beneficiario %></td>
+							<td><%= despesa.cpf_cnpj %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
+							<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>	
 		</div>
 	</div>
 
