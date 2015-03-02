@@ -33,6 +33,7 @@
 						<li>Estado: <%= @deputado.uf %></li>
 						<li>Email: <a href="mailto:<%= @deputado.email %>" ><%= @deputado.email %></a></li>
 						<li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(@deputado.total_despesas) %></b></li>
+						<li>Fonte dos dados: <a href="http://www.camara.gov.br/internet/deputado/Dep_Detalhe.asp?id=<%=@deputado.id_cadastro%>">http://www.camara.gov.br/internet/deputado/Dep_Detalhe.asp?id=<%=@deputado.id_cadastro%></a> </li>
 					</ul>
 				</div>
 			</div>	
