@@ -82,6 +82,10 @@
 					<% end %>
 				</tbody>
 			</table>
+
+			<div class="paginator-wrapper" >
+				<%= will_paginate @despesas, renderer: BootstrapPagination::Rails %> 
+			</div>
 			<p class="small	">* <em>Valor líquido</em> é aquele que não possui descontos ou encargos.</p>	
 			<p class="small	">** <em>Valor Glosado</em> é toda cobrança efetuada que não coincide com os acordos e regras firmadas entre o serviço contratado e a empresa contratante.</p>
 			<p class="small	">*** <em>Valor do documento</em> é o valor líquido acrescido do valor glosado.</p>
