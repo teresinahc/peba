@@ -1,6 +1,3 @@
-require "#{Rails.root}/lib/utils/baixar_dados.rb"
-# require "#{Rails.root}/lib/camara/camara_collector.rb"
-
 namespace :crawler do
   desc "Baixar dados do site da camara dos deputados"
   task run: :environment do
