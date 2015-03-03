@@ -16,11 +16,11 @@
 	<% end %>
 
 	<% if !defined? @page_info[:description] %>
-		<title>O Peba é um sistema que indexa em fonte única informações 
-		relacionadas às despesas de vários entidades governamentais com
-		suporte para filtros e buscas avançadas.</title>
+		<meta name="description" content="O Peba é um sistema que indexa em fonte
+		única informações relacionadas às despesas de vários entidades 
+		governamentais com suporte para filtros e buscas avançadas." >
 	<% else %>
-		<title><%= @page_info[:description] %></title>
+		<meta name="description" content="<%= @page_info[:description] %>" >
 	<% end %>
 
 	<link rel="icon" type="image/png" href="<%= image_path('favicon.png') %>" />
