@@ -1,12 +1,13 @@
 require "#{Rails.root}/lib/utils/baixar_dados.rb"
+# require "#{Rails.root}/lib/camara/camara_collector.rb"
 
 namespace :crawler do
   desc "Baixar dados do site da camara dos deputados"
   task run: :environment do
   	 begin
-	  	 ActiveRecord::Base.transaction do
-		  	 BaixarDados.setup
-	 	 end
+  	 	camara_collector = CamaraCollector.new
+  	 	camara_collector.recuperar_deputados
+  	 	camara_collector.recuperar_cota_parlamentar
 	 rescue
 	 	raise ActiveRecord::Rollback
 	 end
