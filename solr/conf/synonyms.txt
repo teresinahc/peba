@@ -29,3 +29,35 @@ Television, Televisions, TV, TVs
 # Synonym mappings can be used for spelling correction too
 pixima => pixma
 
+#Inclusão do dicionário de sinonimos dos estados para busca
+#testar com phrases do tipo: "deputados do piauí", "Mato Groço", "Piauí", "Amasonas"
+Acre, acre => AC
+Alagoas, alagoas => AL
+Amapá, Amapa, amapa, amapá => AP
+Amazonas, amazonas, Amasonas, amasonas => AM
+Bahia, Baia, bahia, baia => BA
+Ceará, Ceara, ceará, ceara, ciará, Seará, siará, seará  => CE
+Distrito Federal, distrito federal => DF
+Distrito\ Federal, distrito federal => DF
+Espírito Santo, Espirito Santo, espirito santo, espírito santo => ES
+Goiás, Goias, goiás, goias => GO
+Maranhão, maranhão, Maranhao, maranhao, marainhao, marainhão => MA
+Mato Grosso, mato grosso, Mato Groço, mato groço => MT
+Mato\ Grosso\ do\ Sul, Mato\ Grosso\ Do\ Sul, mato\ grosso\ do\ sul, Mato\ Groço\ do\ sul, Mato\ Groço\ Do\ Sul , mato\ groço\ do\ sul => MS
+Mato Grosso do Sul, Mato Grosso Do Sul, mato grosso do sul, Mato Groço do sul, Mato Groço Do Sul , mato groço do sul => MS
+Minas\ Gerais, minas\ gerais, minas\ jerais, Minas\ Jerais  => MG
+Minas Gerais, minas gerais, minas jerais, Minas Jerais => MG
+Pará, pará => PA
+Paraíba, Paraiba => PB
+Paraná, parana => PR
+Pernambuco => PE
+Piauí, piaui, piahuy => PI
+Rio\ de\ Janeiro, Rio\ di\ Janeiro, Rio de Janeiro, Rio di Janeiro => RJ
+Rio\ Grande\ do\ Norte, Rio Grande do Norte => RN
+Rio\ Grande\ do\ Sul, Rio Grande do Sul => RS
+Rondonia, Rondônia, rondônia => RO
+Roraima, roraima => RR
+Santa\ Catarina, Santa Catarina => SC
+São\ Paulo, Sao\ Paulo, Sao Paulo => SP
+Sergipe, Serjipe, sergipe, serjipe => SE
+Tocantins, tocantins => TO
