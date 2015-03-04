@@ -47,15 +47,14 @@
 			<table class="table">
 				<tr>
 					<th>Descrição</th>
-					<th>Valor líquido</th>
-					<th>Valor total</th>
+					<th style="text-align:right" >Valor líquido</th>
+					<th style="text-align:right" >Valor total</th>
 				</tr>
 				<% @despesas.totais_por_descricao.each do |tipo| %>
 					<tr>
 						<td><%= tipo[:descricao] %></td>
-						<td><%= number_to_currency(tipo[:total_liquido]) %></td>
-						<td><%= number_to_currency(tipo[:total]) %></td>
-						
+						<td align="right" ><%= number_to_currency(tipo[:total_liquido]) %></td>
+						<td align="right" ><%= number_to_currency(tipo[:total]) %> 		  </td>
 					</tr>
 				<% end %>
 			</table>

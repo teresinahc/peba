@@ -66,7 +66,8 @@
 						<th>CPF/CNPJ</th>
 						<th>Valor líquido<small>*</small></th>
 						<th>Valor de Glosa<small>**</small></th>
-						<th>Valor do documento<small>***</small></th>
+						<th >Valor do documento<small>***</small></th>
+						<th align="center" >Comprovante</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -78,6 +79,15 @@
 							<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
 							<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
 							<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
+							<td align="center" >
+								<% if !despesa.url_recibo.blank? %>
+									<a href="<%= despesa.url_recibo %>" target="_blank" >
+										<span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
+									</a>
+								<% else %>
+									<span class="glyphicon glyphicon-remove-sign" ></span> Não disponível
+								<% end %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>

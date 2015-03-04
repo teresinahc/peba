@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302225214) do
+ActiveRecord::Schema.define(version: 20150304042419) do
 
   create_table "deputados", force: :cascade do |t|
     t.string   "nome",             limit: 255
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20150302225214) do
     t.integer  "num_ressarcimento",          limit: 4
     t.integer  "num_sub_cota",               limit: 4
     t.integer  "num_especificacao_sub_cota", limit: 4
+    t.string   "numero",                     limit: 255
+    t.string   "url_recibo",                 limit: 255
   end
 
   add_index "despesas", ["deputado_id"], name: "index_despesas_on_deputado_id", using: :btree

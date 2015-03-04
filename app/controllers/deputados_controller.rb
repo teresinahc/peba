@@ -9,7 +9,7 @@ class DeputadosController < ApplicationController
   def show
   	@deputado = Deputado.com_total_despesas.find(params[:id])
   	@despesas = @deputado.despesas.todos(params[:q], params[:page])
-    
+
     @page_info = {
       title: 'Deputado: ' + @deputado.nome.titleize
     }
