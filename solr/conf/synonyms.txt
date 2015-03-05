@@ -29,3 +29,32 @@ Television, Televisions, TV, TVs
 # Synonym mappings can be used for spelling correction too
 pixima => pixma
 
+#Inclusão do dicionário de sinonimos dos estados para busca
+#testar com phrases do tipo: "deputados do piauí", "Mato Groço", "Piauí", "Amasonas"
+Acre, acre => AC
+Alagoas, alagoas => AL
+Amapá, Amapa => AP
+Amazonas, amazonas => AM
+Bahia, Baia  => BA
+Ceará, Ceara  => CE
+Distrito Federal => DF
+Espírito Santo, Espirito Santo => ES
+Goiás, Goias => GO
+Maranhão, maranhao => MA
+Mato Grosso, mato grosso => MT
+Mato Grosso do Sul => MS
+Minas Gerais => MG
+Pará, para => PA
+Paraíba, Paraiba => PB
+Paraná, parana => PR
+Pernambuco => PE
+Piauí, piaui => PI
+Rio de Janeiro => RJ
+Rio Rio Grande do Norte => RN
+Rio Grande do Sul => RS
+Rondonia, Rondônia, rondônia => RO
+Roraima  => RR
+Santa Catarina => SC
+São Paulo, Sao Paulo => SP
+Sergipe  => SE
+Tocantins => TO
