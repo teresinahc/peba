@@ -21,9 +21,19 @@ module RecibosCollector
 
   def self.abre_pagina_recibos(deputado, deputados_select_ids)
     if defined? deputados_select_ids[deputado.nome_parlamentar]  
-      puts deputado.nome
-      page = Nokogiri::HTML(open("http://www.camara.gov.br/cota-parlamentar/cota-analitico?nuDeputadoId=#{deputados_select_ids[deputado.nome_parlamentar]}&numMes=2&numAno=2015&numSubCota="))
-      self.pega_links_dos_recibos(page)
+      puts "Buscando deputado: #{deputado.nome_parlamentar} (#{deputado.id - 1}/#{513})"
+      (2015..Time.now.year).each do |year|
+        (1..Time.now.month).each do |month|
+          url = "http://www.camara.gov.br/cota-parlamentar/cota-analitico?nuDeputadoId=#{deputados_select_ids[deputado.nome_parlamentar].to_s.rjust(2, '0')}&numMes=#{month.to_s.rjust(2, '0')}&numAno=#{year.to_s}&numSubCota="
+          begin
+            page = Nokogiri::HTML(open(url))
+            self.pega_links_dos_recibos(page)
+            puts "[SUCCESS]: #{url}"
+          rescue Exception => e
+            puts "[ERROR]: #{url}"
+          end
+        end 
+      end
     end
   end
 
