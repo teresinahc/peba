@@ -1,7 +1,7 @@
 class Deputado < ActiveRecord::Base
-  
+
   has_many :despesas
-  
+
   searchable do
   	text :nome, :partido, :matricula, :url_foto, :email, :uf
   	text :despesas do
@@ -9,8 +9,8 @@ class Deputado < ActiveRecord::Base
   	end
   end
 
-  scope :com_total_despesas, -> { 
-     joins("LEFT JOIN despesas ON despesas.deputado_id = deputados.id") 
+  scope :com_total_despesas, -> {
+     joins("LEFT JOIN despesas ON despesas.deputado_id = deputados.id")
     .select('deputados.*', 'sum(despesas.valor_liquido) as total_despesas')
     .group('deputados.nome')
   }

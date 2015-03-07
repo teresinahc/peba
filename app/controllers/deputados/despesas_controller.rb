@@ -6,10 +6,10 @@ class Deputados::DespesasController < ApplicationController
 
   def filter_params
     filtro = Hash.new
-    filtro[:num_ano]   = params[:num_ano]     unless params[:num_ano].blank?
-    filtro[:num_mes]   = params[:num_mes]     unless params[:num_mes].blank?
+    filtro[:num_ano]   = params[:num_ano]   unless params[:num_ano].blank?
+    filtro[:num_mes]   = params[:num_mes]   unless params[:num_mes].blank?
     filtro[:descricao] = params[:descricao] unless params[:descricao].blank?
-    
+
     return filtro
   end
 end
