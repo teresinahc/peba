@@ -15,32 +15,22 @@ class Deputado < ActiveRecord::Base
     .group('deputados.nome')
   }
 
-  scope :aleatorios, -> {
-    com_total_despesas.order('RAND()')
-  }
-
-  scope :com_despesas, -> {
-    com_total_despesas.includes(:despesas)
-  }
-
-  scope :maiores_despesas, -> {
-    com_total_despesas.order('total_despesas desc')
-  }
-
-  scope :top_tres, -> {
-    aleatorios.limit(3)
-  }
-
   scope :partidos, -> {
     select('distinct(partido), count(*) as quantidade')
     .group('deputados.partido')
     .map do |deputado|
       {
-        :nome => deputado.partido,
+        :nome       => deputado.partido,
         :quantidade => deputado.quantidade
       }
    end
   }
+
+  scope :aleatorios,       -> { com_total_despesas.order('RAND()')              }
+  scope :com_despesas,     -> { com_total_despesas.includes(:despesas)          }
+  scope :maiores_despesas, -> { com_total_despesas.order('total_despesas desc') }
+  scope :top_tres,         -> { aleatorios.limit(3)                             }
+
 
   def self.buscar(query)
     hits           = self.search { fulltext query }.hits
@@ -50,10 +40,12 @@ class Deputado < ActiveRecord::Base
     self.maiores_despesas.where(id: (deputados_ids))
   end
 
+
   def self.todos(query, current_page, per_page = 10)
     deputados = query.blank? ? self.maiores_despesas : self.buscar(query)
     deputados.paginate(:page => current_page, :per_page => per_page)
   end
+
 
   def data_ultima_atualizacao
     !despesas.empty? ? despesas.mais_novos.first.updated_at : updated_at

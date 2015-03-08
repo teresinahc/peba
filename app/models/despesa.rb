@@ -1,23 +1,23 @@
 class Despesa < ActiveRecord::Base
-  
+
   belongs_to :deputado
 
-  scope :total_gasto, -> { sum(:valor_liquido) }
-  scope :mais_novos,  -> { order('data_emissao desc') }
-  scope :por_classificacao,  ->(classificacao) { where(:descricao=>classificacao) }
-  
-  scope :classificacoes, -> { 
+  scope :total_gasto,        -> { sum(:valor_liquido) }
+  scope :mais_novos,         -> { order('data_emissao desc') }
+  scope :por_classificacao,  -> (classificacao) { where(:descricao => classificacao) }
+
+  scope :classificacoes, -> {
     select("distinct(descricao)").map { |classificacao| classificacao.descricao }
   }
 
-  scope :totais_por_descricao, -> { 
+  scope :totais_por_descricao, -> {
     select("descricao,sum(valor_liquido) as total_liquido,sum(valor_documento) as total")
     .group("descricao")
     .map do |despesa|
       {
-        :descricao=>despesa.descricao,
-        :total_liquido=>despesa.total_liquido,
-        :total => despesa.total
+        :descricao     => despesa.descricao,
+        :total_liquido => despesa.total_liquido,
+        :total         => despesa.total
       }
     end
   }
@@ -30,5 +30,5 @@ class Despesa < ActiveRecord::Base
     mais_novos.where(filtro)
   end
 
- 
+
 end
