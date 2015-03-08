@@ -11,6 +11,6 @@ before_script:
   - curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=3.6.1 bash
 
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - RAILS_ENV=test bundle exec rake db:setup --trace
   - RAILS_ENV=test bundle exec rake sunspot:solr:start
   - bundle exec rspec spec
