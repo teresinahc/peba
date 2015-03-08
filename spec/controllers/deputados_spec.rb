@@ -17,6 +17,16 @@ describe DeputadosController, type: :controller do
         espero_que(amostra).tenha %w(id nome email partido uf url_foto total_despesas)
       end
     end
+
+    context 'busca' do
+      it 'retorna resultado para cada parametro' do
+        [:nome, :nome_parlamentar, :partido, :matricula, :url_foto, :email, :uf].each do |attr|
+          get :index, params: {q: @deputado[attr]}, format: :json
+
+          expect(response.body).to_not be_blank
+        end
+      end
+    end
   end
 
 
