@@ -1,4 +1,4 @@
-require "#{Rails.root}/lib/base_collector.rb"
+require "#{Rails.root}/lib/camara/base_collector.rb"
 require "#{Rails.root}/lib/camara/camara_parser.rb"
 require "#{Rails.root}/lib/camara/camara_updater.rb"
 

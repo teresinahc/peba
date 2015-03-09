@@ -8,8 +8,20 @@ Softwares utilizados
 ---
 
 * Ruby on Rails
-* Nokogiri
 * Solr
+
+---
+Gems utilizadas
+---
+
+* nokogiri
+* will_paginate
+* bootstrap-sass
+* rails-i18n
+* sunspot_rails
+* sunspot_solr
+* will_paginate-bootstrap
+* chartkick
 
 ---
 Como executar?
@@ -30,3 +42,8 @@ Como executar?
 
 6. Iniciar o rails
     * `rails s` ou `guard`
+
+---
+Como colaborar?
+---
+Você pode nos ajudar abrindo issues através do github reportando bugs e nos enviando sugestões. Aos que desejam colaborar com código, peço que enviem Pull Requests para o branch "develop".
