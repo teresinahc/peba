@@ -9,7 +9,7 @@
 
 	<div id="description" class="row" >
 		<div class="col-lg-12" >
-			<h1 class="lead" ><%= @deputado.nome %></h1>	
+			<h1 class="lead" ><%= @deputado.nome %></h1>
 			<small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
 			<div id="social" >
 				<iframe src="//www.facebook.com/plugins/like.php?href=<%= @opengraph[:url] %>&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=379390102214515" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;width:140px;padding-left:40px" allowTransparency="true"></iframe>
@@ -33,14 +33,14 @@
 						<li>Estado: <%= @deputado.uf %></li>
 						<li>Email: <a href="mailto:<%= @deputado.email %>" ><%= @deputado.email %></a></li>
 						<li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(@deputado.total_despesas) %></b></li>
-						<li>Fonte dos dados: <a href="http://www.camara.gov.br/internet/deputado/Dep_Detalhe.asp?id=<%=@deputado.id_cadastro%>">http://www.camara.gov.br/internet/deputado/Dep_Detalhe.asp?id=<%=@deputado.id_cadastro%></a> </li>
+						<li>Fonte dos dados: <%= link_to(nil, detalhe_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
 					</ul>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
 
-	
+
 	<div id="expenses" class="row" >
 		<div class="col-lg-12" >
 			<h3>Classificações de Despesas:</h3>
