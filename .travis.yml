@@ -3,7 +3,7 @@ language: ruby
 rvm:
   - 2.2.1
 
-bundler_args: ''
+bundler_args: --without development
 
 before_script:
   - cp config/database.yml.template config/database.yml
