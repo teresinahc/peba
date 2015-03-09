@@ -3,12 +3,12 @@ language: ruby
 rvm:
   - 2.2.1
 
-bundler_args: ''
+bundler_args: --without development
 
 before_script:
   - cp config/database.yml.template config/database.yml
   - cp config/secrets.template.yml config/secrets.yml
-  - curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=3.6.1 bash
+  - curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.10.3 bash
 
 script:
   - RAILS_ENV=test bundle exec rake db:setup --trace
