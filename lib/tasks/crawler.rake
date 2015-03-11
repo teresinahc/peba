@@ -7,6 +7,6 @@ namespace :crawler do
   	 	camara_collector = CamaraCollector.new
   	 	camara_collector.recuperar_deputados
   	 	camara_collector.recuperar_cota_parlamentar
-      RecibosCollector.run
+      #RecibosCollector.run
   end
 end
