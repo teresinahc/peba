@@ -13,18 +13,30 @@ class CamaraCollector < BaseCollector
 	end
 
 
-	def recuperar_total_votos
-		url  = "http://inter04.tse.jus.br/ords/dwtse/f?p=201403:133:4187832305687943:FLOW_EXCEL_OUTPUT_R65632543115268150_pt-br"
-		file = "#{Rails.root}/tmp/votos.csv"
+	def recuperar_total_votos(tipo = :eleitos)
+		tipos_validos = [:eleitos, :suplentes]
+		throw Exception.new("Insira um tipo valido") unless tipo.in?(tipos_validos)
 
-		system "curl --silent #{url} > #{file}"
-    response = File.read(file).encode("utf-8", "iso-8859-1")
+		# PRIMEIRO TURNO: o suficiente para pegarmos os deputados
+		# "UF";"Cargo";"Nr";"Candidato";"Partido";"Coligação";"Situação";"Votação";"% Válidos";
+		if tipo == :eleitos
+			url = "http://inter04.tse.jus.br/ords/dwtse/f?p=201403:101:110001388088023:FLOW_EXCEL_OUTPUT_R80771993629315934_pt-br"
+		else # suplentes
+			url = "http://inter04.tse.jus.br/ords/dwtse/f?p=201403:101:281385371258783:FLOW_EXCEL_OUTPUT_R80771993629315934_pt-br"
+		end
 
-    # remove todas as linhas desnecessarias
-    response.gsub!(/"";"";"";"";"";"";"";"[0-9]+(\.[0-9]+)?(\.[0-9]+)?"\n/, '')
+	  dir  = "#{Rails.root}/tmp"
+	  file = "#{dir}/votos.csv"
 
-    resultado = CSV.parse(response, headers: true, col_sep: ';', quote_char: '"')
-    CamaraUpdater.update_votos(resultado)
+	  system "mkdir -p #{dir}"
+	  system "curl --silent #{url} > #{file}"
+	  response = File.read(file).encode("utf-8", "iso-8859-1")
+
+	  # remove todas as linhas desnecessarias
+	  File.write(file, response.gsub!(/"";"";"";"";"";"";"";"[0-9]+(\.[0-9]+)?(\.[0-9]+)?";""\n/, ''))
+
+	  resultado = CSV.parse(response, headers: true, col_sep: ';', quote_char: '"')
+	  CamaraUpdater.update_votos(resultado)
 	end
 
 

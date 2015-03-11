@@ -18,10 +18,6 @@ class CamaraParser
 	   end
 	end
 
-	def self.total_votos(content)
-
-	end
-
 	def self.parse_cota_parlamentar(content)
 		doc 		  = Nokogiri::XML.parse(content)
   	despesas  = doc.css("DESPESA")

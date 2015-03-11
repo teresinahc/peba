@@ -10,7 +10,7 @@ describe Deputados::DespesasController, type: :controller do
 
   describe 'GET #index' do
     context 'via json' do
-      it 'lista as despesas e exibe os atributos corretamente' do
+      it 'deve listar as despesas e exibir os atributos corretamente' do
         get :index, deputado_id: @deputado.id, format: :json
 
         json = JSON.parse(response.body)

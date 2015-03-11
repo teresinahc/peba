@@ -27,15 +27,7 @@
 						<img src="<%= @deputado.url_foto %>" alt="">
 					</div>
 				</div>
-				<div class="col-lg-6" >
-					<ul class="list-unstyled" >
-						<li>Partido: <%= @deputado.partido %></li>
-						<li>Estado: <%= @deputado.uf %></li>
-						<li>Email: <a href="mailto:<%= @deputado.email %>" ><%= @deputado.email %></a></li>
-						<li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(@deputado.total_despesas) %></b></li>
-						<li>Fonte dos dados: <%= link_to(nil, detalhe_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
-					</ul>
-				</div>
+				<div class="col-lg-6" > <%= render @deputado %> </div>
 			</div>
 		</div>
 	</div>
@@ -63,5 +55,16 @@
 
 	<div class="paginator-wrapper" >
 		<%= link_to "Ver detalhes das despesas", deputado_despesas_path(@deputado), :class => "btn btn-primary btn-yellow" %>
+	</div>
+
+	<div class="row">
+		<ul class="list-unstyled" >
+			<li> <span class='label'>Fonte dos dados:</span>
+			  <ul>
+			    <li><%= link_to(nil, detalhe_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
+			    <li><%= link_to(nil, 'http://www.tse.jus.br/eleicoes/estatisticas/estatisticas-candidaturas-2014', target: '_blank') %></li>
+			  </ul>
+			</li>
+		</ul>
 	</div>
 </div>
