@@ -1,0 +1,17 @@
+<ul class="list-unstyled" >
+  <% unless deputado.situacao_candidatura.nil? %>
+    <li>Situação: <%= deputado.situacao_candidatura %></li>
+  <% end %>
+  <li>Partido: <%= deputado.partido %></li>
+  <li>Estado: <%= deputado.uf %></li>
+  <li>Email: <a href="mailto:<%= deputado.email %>" ><%= deputado.email %></a></li>
+  <li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(deputado.total_despesas) %></b></li>
+
+  <% unless deputado.porcentagem_votos.nil? %>
+    <li>Votos válidos: <%= number_to_percentage(deputado.porcentagem_votos, precision: 2) %></li>
+  <% end %>
+
+  <% unless deputado.total_votos.nil? %>
+    <li>Total de votos: <%= number_with_delimiter(deputado.total_votos) %></li>
+  <% end %>
+</ul>

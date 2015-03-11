@@ -4,7 +4,7 @@ describe Deputado, type: :model do
   it { should have_many(:despesas) }
 
   context 'busca' do
-    it 'busca por nome indenpendente da acentuação ou case' do
+    it 'deve buscar por nome independente da acentuação ou case' do
       attrs    = FactoryGirl.attributes_for(:deputado).merge nome: "JOSÉ"
       deputado = Deputado.create! attrs
 

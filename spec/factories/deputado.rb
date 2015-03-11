@@ -9,5 +9,8 @@ FactoryGirl.define do
     partido "PDSK"
     uf "KD"
     id_cadastro "12345"
+    total_votos 123
+    porcentagem_votos 10.0
+    situacao_candidatura "Eleito"
   end
 end

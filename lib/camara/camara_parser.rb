@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class CamaraParser 
+class CamaraParser
 	def self.parse_deputados(content)
 		document = Nokogiri::XML.parse(content)
     	deputados = document.css("deputado")

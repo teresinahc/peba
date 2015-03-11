@@ -37,13 +37,13 @@ a{
   padding-top: 7em;
   padding-bottom: 4em;
   margin-bottom: 0;
-} 
+}
 .logo-box {
   width: 200px;
   display: block;
   position: relative;
   margin: 30px auto 30px auto;
-} 
+}
 .peba-search {
   padding: 1.3em 0.8em 1em;
   max-width: 44em;
@@ -63,8 +63,8 @@ a{
   }
 }
 
-#results { 
-  .item { 
+#results {
+  .item {
     text-align:center;
     b {
       display:block
@@ -128,7 +128,7 @@ a{
 		border-color: #FDCA01;
 		&:hover{
 			background: #D1A805;
-		}  
+		}
 	}
 }
 
@@ -141,23 +141,23 @@ a{
 		&:hover {
 			span{
 				background: #FDCA01;
-				border-color: #FDCA01; 
+				border-color: #FDCA01;
 			}
 		}
 		span {
 			background: #FDCA01;
-			border-color: #FDCA01; 
+			border-color: #FDCA01;
 		}
-	} 
+	}
 }
 
 .paginator-wrapper .btn {
 	color:#333;
-	border-color: #FDCA01; 	
+	border-color: #FDCA01;
 }
 
 .paginator-wrapper .btn-yellow {
-	background: #FDCA01;	
+	background: #FDCA01;
 }
 
 .pagination a, .pagination a span {
@@ -193,7 +193,7 @@ p.small {
 #description {
 	color: #FFF;
 	margin-bottom: 20px;
-	a{
+	a {
 		color: #FDCA01;
 	}
 	h1{
@@ -201,12 +201,23 @@ p.small {
 		font-size: 30px;
 		font-weight: bold;
 	}
+
 	ul {
-		margin-top: 30px;
+		margin-top: 10px;
+    li {
+      font-size: 17px;
+      ul {
+        margin: 0;
+        padding-left: 15px;
+        li {
+          margin-top: 5px;
+          list-style: none;
+          &:first { margin-top: 0px; }
+        }
+      }
+    }
 	}
-	ul li {
-		font-size: 17px;
-	}
+
 }
 
 #logo {
@@ -232,11 +243,11 @@ p.small {
 
 #document {
 	padding-top: 3.5em;
-}	
+}
 
 #search-page {
 	padding-top: 0.5em;
-}	
+}
 
 #social {
 	text-align: center;

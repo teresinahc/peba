@@ -32,12 +32,12 @@ class Deputado < ActiveRecord::Base
   scope :top_tres,         -> { aleatorios.limit(3)                             }
 
 
-  def self.buscar(query)
-    hits           = self.search { fulltext query }.hits
+  def self.buscar(query, attrs = {})
+    hits           = self.search { fulltext query, attrs }.hits
     deputados_ids  = hits.map { |hit| hit.primary_key }
 
     # Busca por ID os registros encontrados pela busca
-    self.maiores_despesas.where(id: (deputados_ids))
+    self.maiores_despesas.where(id: deputados_ids.map(&:to_i))
   end
 
 
