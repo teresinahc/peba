@@ -21,6 +21,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'will_paginate-bootstrap'
 gem "chartkick"
+gem "progress_bar"
 
 group :development do
   gem 'spring'
