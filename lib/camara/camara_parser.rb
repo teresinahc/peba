@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class CamaraParser 
+class CamaraParser
 	def self.parse_deputados(content)
 		document = Nokogiri::XML.parse(content)
     	deputados = document.css("deputado")
@@ -16,6 +16,10 @@ class CamaraParser
 	         :id_cadastro 		 => deputado.css("ideCadastro").text.to_i
 	       }
 	   end
+	end
+
+	def self.total_votos(content)
+
 	end
 
 	def self.parse_cota_parlamentar(content)
