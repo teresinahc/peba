@@ -6,7 +6,9 @@ namespace :crawler do
   task run: :environment do
   	 	camara_collector = CamaraCollector.new
   	 	camara_collector.recuperar_deputados
-  	 	camara_collector.recuperar_cota_parlamentar
+      camara_collector.recuperar_total_votos :eleitos
+      camara_collector.recuperar_total_votos :suplentes
+      camara_collector.recuperar_cota_parlamentar
       RecibosCollector.run
   end
 end
