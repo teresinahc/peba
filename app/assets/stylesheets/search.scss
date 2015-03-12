@@ -17,9 +17,9 @@
 @import "bootstrap";
 
 @media only screen and (max-width: 600px) {
-	.search-result: {
-		text-align:center
-	};
+  .search-result: {
+    text-align:center
+  };
 }
 
 /* Style */
@@ -28,7 +28,7 @@ body {
 }
 
 a{
-	color: #FDCA01;
+  color: #FDCA01;
 }
 
 .container {
@@ -59,7 +59,7 @@ a{
   text-align:center;
   margin:15px 0;
   b {
-  	color: #FDCA01;
+    color: #FDCA01;
   }
 }
 
@@ -83,127 +83,127 @@ a{
 }
 
 .circle {
-	height:150px;
-	width: 150px;
-	overflow: hidden;
-	background:#FFF;
-	border-radius: 75px;
-	display: inline-block;
-	margin:10px 0;
-	text-align: center;
+  height:150px;
+  width: 150px;
+  overflow: hidden;
+  background:#FFF;
+  border-radius: 75px;
+  display: inline-block;
+  margin:10px 0;
+  text-align: center;
 }
 
 #credits {
-	text-align:center;
-	padding-bottom: 20px;
-	a {
-		display: inline-block;
-		margin: 0 10px;
-		color: #999;
-	}
+  text-align:center;
+  padding-bottom: 20px;
+  a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #999;
+  }
 }
 
 #search-results {
-	padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .search-result {
-	display: block;
-	padding: 30px;
-	border-bottom:1px solid #444;
-	&:hover {
-		background: #444;
-	}
-	.name{
-		color: #FDCA01;
-	}
-	ul li {
-		color: #FFF;
-		font-size: 17px;
-	}
-	.more-infos {
-		margin-top: 70px;
-		background: #FDCA01;
-		color: #333;
-		border-color: #FDCA01;
-		&:hover{
-			background: #D1A805;
-		}
-	}
+  display: block;
+  padding: 30px;
+  border-bottom:1px solid #444;
+  &:hover {
+    background: #444;
+  }
+  .name{
+    color: #FDCA01;
+  }
+  ul li {
+    color: #FFF;
+    font-size: 17px;
+  }
+  .more-infos {
+    margin-top: 70px;
+    background: #FDCA01;
+    color: #333;
+    border-color: #FDCA01;
+    &:hover{
+      background: #D1A805;
+    }
+  }
 }
 
 .paginator-wrapper {
-	text-align: center;
+  text-align: center;
 }
 
 .pagination {
-	.active {
-		&:hover {
-			span{
-				background: #FDCA01;
-				border-color: #FDCA01;
-			}
-		}
-		span {
-			background: #FDCA01;
-			border-color: #FDCA01;
-		}
-	}
+  .active {
+    &:hover {
+      span{
+        background: #FDCA01;
+        border-color: #FDCA01;
+      }
+    }
+    span {
+      background: #FDCA01;
+      border-color: #FDCA01;
+    }
+  }
 }
 
 .paginator-wrapper .btn {
-	color:#333;
-	border-color: #FDCA01;
+  color:#333;
+  border-color: #FDCA01;
 }
 
 .paginator-wrapper .btn-yellow {
-	background: #FDCA01;
+  background: #FDCA01;
 }
 
 .pagination a, .pagination a span {
-	color: #333;
+  color: #333;
 }
 
 p {
-	color: #FFF;
+  color: #FFF;
 }
 
 p.small {
-	font-size:10px;
+  font-size:10px;
 }
 
 #expenses h3 {
-	color: #FFF;
+  color: #FFF;
 }
 #expenses table {
-	width: 100%;
-	color: #FFF;
-	margin-bottom: 30px;
-	thead th {
-		padding: 7px 5px;
-	}
-	tbody td {
-		padding: 5px 5px;
-	}
-	tbody tr:nth-child(odd) {
-		background-color: #444;
-	}
+  width: 100%;
+  color: #FFF;
+  margin-bottom: 30px;
+  thead th {
+    padding: 7px 5px;
+  }
+  tbody td {
+    padding: 5px 5px;
+  }
+  tbody tr:nth-child(odd) {
+    background-color: #444;
+  }
 }
 
 #description {
-	color: #FFF;
-	margin-bottom: 20px;
-	a {
-		color: #FDCA01;
-	}
-	h1{
-		text-align: center;
-		font-size: 30px;
-		font-weight: bold;
-	}
+  color: #FFF;
+  margin-bottom: 20px;
+  a {
+    color: #FDCA01;
+  }
+  h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
 
-	ul {
-		margin-top: 10px;
+  ul {
+    margin-top: 10px;
     li {
       font-size: 17px;
       ul {
@@ -216,50 +216,50 @@ p.small {
         }
       }
     }
-	}
+  }
 
 }
 
 #logo {
-	text-align: center;
-	margin-top: 30px;
+  text-align: center;
+  margin-top: 30px;
 }
 
 #search-form {
-	padding-top:40px;
+  padding-top:40px;
 }
 
 #social-share {
-	text-align:center;
-	padding-top: 30px;
-	padding-bottom: 15px;
+  text-align:center;
+  padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 #update-info{
-	display: block;
-	text-align: center;
-	margin-bottom: 20px;
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 #document {
-	padding-top: 3.5em;
+  padding-top: 3.5em;
 }
 
 #search-page {
-	padding-top: 0.5em;
+  padding-top: 0.5em;
 }
 
 #social {
-	text-align: center;
-	padding:10px 0;
+  text-align: center;
+  padding:10px 0;
 }
 
 #video-wrapper{
-	width: 502px;
-	height: 282px;
-	margin: 0 auto;
+  width: 502px;
+  height: 282px;
+  margin: 0 auto;
 }
 
 #filter label {
-	color: #FFF;
+  color: #FFF;
 }

@@ -1,22 +1,22 @@
 <div class="row">
-	<div class="center-box col-md-8 col-md-offset-2" >
-		<div id="logo" >
-			<a href="<%= root_path %>" >
-				<%= image_tag 'peba_logo.png' %>
-			</a>
-		</div>
-		<div id="search-form" class="peba-search col-lg-8 col-sm-10">
-        	<%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
-				<div class="form-group" >
-					<div class="input-group">
-			    		<%= text_field_tag :q, params[:q], :class => "form-control", :placeholder => "Procure por um deputado" %>
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit">Cavar</button>
-						</span>
-					</div> 
-					<p class="help-block">Busque por nome, partido, estado, fornecedor, CPF, CNPJ... </p>
-				</div>
-			<% end %>
-		</div>
-	</div> 
+  <div class="center-box col-md-8 col-md-offset-2" >
+    <div id="logo" >
+      <a href="<%= root_path %>" >
+        <%= image_tag 'peba_logo.png' %>
+      </a>
+    </div>
+    <div id="search-form" class="peba-search col-lg-8 col-sm-10">
+          <%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
+        <div class="form-group" >
+          <div class="input-group">
+              <%= text_field_tag :q, params[:q], :class => "form-control", :placeholder => "Procure por um deputado" %>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Cavar</button>
+            </span>
+          </div>
+          <p class="help-block">Busque por nome, partido, estado, fornecedor, CPF, CNPJ... </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
