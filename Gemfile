@@ -30,9 +30,9 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-inotify', :require => false
 end
 
 group :test do
@@ -42,6 +42,7 @@ group :test do
   gem 'launchy'
   gem 'sunspot_test'
   gem 'selenium-webdriver'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development, :test do

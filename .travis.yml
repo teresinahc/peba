@@ -13,3 +13,7 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake db:setup --trace
   - bundle exec rspec spec
+
+addons:
+  code_climate:
+    repo_token: 9f45b1759413ec95a994b8cf1adad1fe11e73f28a49f0d036512554a61f1c1ec
