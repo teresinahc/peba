@@ -1,118 +1,115 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
 <div id="logo" >
-	<a href="<%= root_path %>">
-		<%= image_tag 'peba_logo.png' %>
-	</a>
+  <a href="<%= root_path %>">
+    <%= image_tag 'peba_logo.png' %>
+  </a>
 </div>
 <div id="document" class="container">
 
-	<div id="description" class="row" >
-		<div class="col-lg-12" >
-			<h1 class="lead" ><%= @deputado.nome %></h1>
-			<small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
+  <div id="description" class="row" >
+    <div class="col-lg-12" >
+      <h1 class="lead" ><%= @deputado.nome %></h1>
+      <small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
 
-			<div class="row" >
-				<div class="col-lg-2 col-lg-offset-4" >
-					<div class="circle" >
-						<img src="<%= @deputado.url_foto %>" alt="">
-					</div>
-				</div>
-				<div class="col-lg-6" > <%= render partial: 'deputados/deputado', object: @deputado %> </div>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="expenses" class="row" >
-		<div class="col-lg-12" >
-			<h3>Detalhamento de Despesas:</h3>
-
-			<div id="filter" class="row" >
-				<%= form_tag(deputado_despesas_path(@deputado.id), class: 'inline-form', method: 'get') do |f| %>
-					<div class="col-lg-3" >
-						<div class="form-group" >
-							<label>Categoria</label>
-							<%= select_tag('descricao',  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), include_blank: 'Todos', class: 'form-control', onchange: 'this.form.submit()') %>
-						</div>
-					</div>
-					<div class="col-lg-2" >
-						<div class="form-group" >
-							<label for="">Ano</label>
-							<%= select_year(params[:num_ano].to_i, {start_year: 2015, end_year: Date.today.year, prompt: 'Todos'}, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
-						</div>
-					</div>
-					<div class="col-lg-2" >
-						<div class="form-group" >
-							<label for="">Mês</label>
-							<%= select_month(params[:num_mes].to_i, {prompt: 'Todos'}, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
-						</div>
-					</div>
-				<% end %>
-			</div>
-
-			<table>
-				<thead>
-					<tr>
-						<th>Data</th>
-						<th>Beneficiário</th>
-						<th>CPF/CNPJ</th>
-						<th>Valor líquido<small>*</small></th>
-						<th>Valor de Glosa<small>**</small></th>
-						<th >Valor do documento<small>***</small></th>
-						<th align="center" >Comprovante</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @despesas.each do |despesa| %>
-						<tr>
-							<td><%= despesa.data_emissao %></td>
-							<td><%= despesa.beneficiario %></td>
-							<td><%= despesa.cpf_cnpj %></td>
-							<td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
-							<td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
-							<td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
-							<td align="center" >
-								<% if !despesa.url_recibo.blank? %>
-									<a href="<%= despesa.url_recibo %>" target="_blank" >
-										<span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
-									</a>
-								<% else %>
-									<span class="glyphicon glyphicon-remove-sign" ></span> Não disponível
-								<% end %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-
-			<div id="info" class="col-lg-12" >
-				<a href="<%= aletaroio_path %>" class="btn btn-default btn-white" >
-					Continuar Cavando
-				</a>
-			</div>
+      <div class="row" >
+        <div class="col-lg-2 col-lg-offset-4" >
+          <div class="circle" >
+            <img src="<%= @deputado.url_foto %>" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6" > <%= render partial: 'deputados/deputado', object: @deputado %> </div>
+      </div>
+    </div>
+  </div>
 
 
-			<div class="paginator-wrapper" >
-				<%= will_paginate @despesas, renderer: BootstrapPagination::Rails %>
-			</div>
-			<div class="row">
-				<ul class="list-unstyled" >
-					<li> <span class='label'>Fonte dos dados:</span>
-					  <ul>
-					    <li><%= link_to(nil, cota_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
-					    <li><%= link_to(nil, 'http://www.tse.jus.br/eleicoes/estatisticas/estatisticas-candidaturas-2014', target: '_blank') %></li>
-					  </ul>
-					</li>
-				</ul>
+  <div id="expenses" class="row" >
+    <div class="col-lg-12" >
+      <h3>Detalhamento de Despesas:</h3>
 
-				<p class="small	">* <em>Valor líquido</em> é aquele que não possui descontos ou encargos.</p>
-				<p class="small	">** <em>Valor Glosado</em> é toda cobrança efetuada que não coincide com os acordos e regras firmadas entre o serviço contratado e a empresa contratante.</p>
-				<p class="small	">*** <em>Valor do documento</em> é o valor líquido acrescido do valor glosado.</p>
-			</div>
-		</div>
-	</div>
+      <div id="filter" class="row" >
+        <%= form_tag(deputado_despesas_path(@deputado.id), class: 'inline-form', method: 'get') do |f| %>
+          <div class="col-lg-3" >
+            <div class="form-group" >
+              <label>Categoria</label>
+              <%= select_tag('descricao',  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), include_blank: 'Todos', class: 'form-control', onchange: 'this.form.submit()') %>
+            </div>
+          </div>
+          <div class="col-lg-2" >
+            <div class="form-group" >
+              <label for="">Ano</label>
+              <%= select_year(params[:num_ano].to_i, {start_year: 2015, end_year: Date.today.year, prompt: 'Todos'}, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
+            </div>
+          </div>
+          <div class="col-lg-2" >
+            <div class="form-group" >
+              <label for="">Mês</label>
+              <%= select_month(params[:num_mes].to_i, {prompt: 'Todos'}, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Beneficiário</th>
+            <th>CPF/CNPJ</th>
+            <th>Valor líquido<small>*</small></th>
+            <th>Valor de Glosa<small>**</small></th>
+            <th >Valor do documento<small>***</small></th>
+            <th align="center" >Comprovante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @despesas.each do |despesa| %>
+            <tr>
+              <td><%= despesa.data_emissao %></td>
+              <td><%= despesa.beneficiario %></td>
+              <td><%= despesa.cpf_cnpj %></td>
+              <td align="right" ><%= number_to_currency(despesa.valor_liquido) %></td>
+              <td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
+              <td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
+              <td align="center" >
+                <% if !despesa.url_recibo.blank? %>
+                  <a href="<%= despesa.url_recibo %>" target="_blank" >
+                    <span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
+                  </a>
+                <% else %>
+                  <span class="glyphicon glyphicon-remove-sign" ></span> Não disponível
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div id="info" class="col-lg-12" >
+        <a href="<%= aletaroio_path %>" class="btn btn-default btn-white" >
+          Continuar Cavando
+        </a>
+      </div>
 
 
+      <div class="paginator-wrapper" >
+        <%= will_paginate @despesas, renderer: BootstrapPagination::Rails %>
+      </div>
+      <div class="row">
+        <ul class="list-unstyled" >
+          <li> <span class='label'>Fonte dos dados:</span>
+            <ul>
+              <li><%= link_to(nil, cota_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
+              <li><%= link_to(nil, 'http://www.tse.jus.br/eleicoes/estatisticas/estatisticas-candidaturas-2014', target: '_blank') %></li>
+            </ul>
+          </li>
+        </ul>
 
+        <p class="small ">* <em>Valor líquido</em> é aquele que não possui descontos ou encargos.</p>
+        <p class="small ">** <em>Valor Glosado</em> é toda cobrança efetuada que não coincide com os acordos e regras firmadas entre o serviço contratado e a empresa contratante.</p>
+        <p class="small ">*** <em>Valor do documento</em> é o valor líquido acrescido do valor glosado.</p>
+      </div>
+    </div>
+  </div>
 </div>

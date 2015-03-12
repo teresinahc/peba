@@ -6,9 +6,9 @@ module RecibosCollector
   def self.coleta_nu_deputado_id
     deputados = Hash.new
     html      = Nokogiri::HTML(open('http://www.camara.gov.br/cota-parlamentar/index.jsp'))
-    
+
     html.xpath('//*[@id="listaDep"]/option').each { |op| deputados[op.text.strip] = op.attribute('value').text }
-    
+
     return deputados
   end
 
@@ -20,7 +20,7 @@ module RecibosCollector
   end
 
   def self.abre_pagina_recibos(deputado, deputados_select_ids)
-    if defined? deputados_select_ids[deputado.nome_parlamentar]  
+    if defined? deputados_select_ids[deputado.nome_parlamentar]
       puts "Buscando deputado: #{deputado.nome_parlamentar} (#{deputado.id - 1}/#{513})"
       (2015..Time.now.year).each do |year|
         (1..Time.now.month).each do |month|
@@ -32,7 +32,7 @@ module RecibosCollector
           rescue Exception => e
             puts "[ERROR]: #{url}"
           end
-        end 
+        end
       end
     end
   end

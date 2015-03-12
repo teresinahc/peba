@@ -40,6 +40,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'sunspot_test'
   gem 'selenium-webdriver'
 end
 

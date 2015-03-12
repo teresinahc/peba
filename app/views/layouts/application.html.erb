@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<% if defined? @opengraph %>
-		<%= render 'partials/opengraph_tags' %>
-	<% end %>
-	
-	<% if !defined? @page_info[:title] %>
-		<title>Peba - Indexador de dados públicos</title>
-	<% else %>
-		<title>Peba - <%= @page_info[:title] %></title>
-	<% end %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<% if !defined? @page_info[:description] %>
-		<meta name="description" content="O Peba é um sistema que indexa em fonte
-		única informações relacionadas às despesas de vários entidades 
-		governamentais com suporte para filtros e buscas avançadas." >
-	<% else %>
-		<meta name="description" content="<%= @page_info[:description] %>" >
-	<% end %>
+  <% if defined? @opengraph %>
+    <%= render 'partials/opengraph_tags' %>
+  <% end %>
 
-	<link rel="icon" type="image/png" href="<%= image_path('favicon.png') %>" />
-	<%= stylesheet_link_tag    'search', media: 'all', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
+  <% if !defined? @page_info[:title] %>
+    <title>Peba - Indexador de dados públicos</title>
+  <% else %>
+    <title>Peba - <%= @page_info[:title] %></title>
+  <% end %>
+
+  <% if !defined? @page_info[:description] %>
+    <meta name="description" content="O Peba é um sistema que indexa em fonte
+    única informações relacionadas às despesas de vários entidades
+    governamentais com suporte para filtros e buscas avançadas." >
+  <% else %>
+    <meta name="description" content="<%= @page_info[:description] %>" >
+  <% end %>
+
+  <link rel="icon" type="image/png" href="<%= image_path('favicon.png') %>" />
+  <%= stylesheet_link_tag    'search', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
 
-	<%= yield %>
-	
-	<div id="credits" >
-		<nav>
-			<a href="http://teresinahc.org/wiki/index.php/Projetos:Peba" target="_blank" >Sobre o projeto</a>
-			<a href="http://teresinahc.org" target="_blank" >Teresina Hacker Clube</a>
-			<a href="https://github.com/teresinahc/camara_deputados_hack" target="_blank" >Github</a>
-			<a href="http://teresinahc.org/peba-feedback/" target="_blank" >Feedback</a>
-		</nav>
-	</div>
-	
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<script type="text/javascript">window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
-	<script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="<%= root_url + asset_path('whatsapp-button.js') %>";h.appendChild(s);}</script>
+  <%= yield %>
+
+  <div id="credits" >
+    <nav>
+      <a href="http://teresinahc.org/wiki/index.php/Projetos:Peba" target="_blank" >Sobre o projeto</a>
+      <a href="http://teresinahc.org" target="_blank" >Teresina Hacker Clube</a>
+      <a href="https://github.com/teresinahc/camara_deputados_hack" target="_blank" >Github</a>
+      <a href="http://teresinahc.org/peba-feedback/" target="_blank" >Feedback</a>
+    </nav>
+  </div>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript">window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+  <script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="<%= root_url + asset_path('whatsapp-button.js') %>";h.appendChild(s);}</script>
 </body>
 </html>

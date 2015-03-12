@@ -1,70 +1,70 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
 <div id="logo" >
-	<a href="<%= root_path %>">
-		<%= image_tag 'peba_logo.png' %>
-	</a>
+  <a href="<%= root_path %>">
+    <%= image_tag 'peba_logo.png' %>
+  </a>
 </div>
 <div id="document" class="container">
 
-	<div id="description" class="row" >
-		<div class="col-lg-12" >
-			<h1 class="lead" ><%= @deputado.nome %></h1>
-			<small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
-			<div id="social" >
-				<iframe src="//www.facebook.com/plugins/like.php?href=<%= @opengraph[:url] %>&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=379390102214515" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;width:140px;padding-left:40px" allowTransparency="true"></iframe>
-				<a class="twitter-share-button"
-					href="https://twitter.com/share"
-					data-url="<%= @opengraph[:url] %>"
-					data-via="@pebadadospublicos">
-					Tweet
-				</a>
-				<a href="whatsapp://send" data-text="<%= @opengraph[:description] %>" data-href="<%= @opengraph[:url] %>" class="wa_btn wa_btn_s" style="display:none">Compartilhar</a>
-			</div>
-			<div class="row" >
-				<div class="col-lg-2 col-lg-offset-4" >
-					<div class="circle" >
-						<img src="<%= @deputado.url_foto %>" alt="">
-					</div>
-				</div>
-				<div class="col-lg-6" > <%= render @deputado %> </div>
-			</div>
-		</div>
-	</div>
+  <div id="description" class="row" >
+    <div class="col-lg-12" >
+      <h1 class="lead" ><%= @deputado.nome %></h1>
+      <small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
+      <div id="social" >
+        <iframe src="//www.facebook.com/plugins/like.php?href=<%= @opengraph[:url] %>&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=379390102214515" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;width:140px;padding-left:40px" allowTransparency="true"></iframe>
+        <a class="twitter-share-button"
+          href="https://twitter.com/share"
+          data-url="<%= @opengraph[:url] %>"
+          data-via="@pebadadospublicos">
+          Tweet
+        </a>
+        <a href="whatsapp://send" data-text="<%= @opengraph[:description] %>" data-href="<%= @opengraph[:url] %>" class="wa_btn wa_btn_s" style="display:none">Compartilhar</a>
+      </div>
+      <div class="row" >
+        <div class="col-lg-2 col-lg-offset-4" >
+          <div class="circle" >
+            <img src="<%= @deputado.url_foto %>" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6" > <%= render @deputado %> </div>
+      </div>
+    </div>
+  </div>
 
 
-	<div id="expenses" class="row" >
-		<div class="col-lg-12" >
-			<h3>Classificações de Despesas:</h3>
-			<table class="table">
-				<tr>
-					<th>Descrição</th>
-					<th style="text-align:right" >Valor líquido</th>
-					<th style="text-align:right" >Valor total</th>
-				</tr>
-				<% @despesas.totais_por_descricao.each do |tipo| %>
-					<tr>
-						<td><%= tipo[:descricao] %></td>
-						<td align="right" ><%= number_to_currency(tipo[:total_liquido]) %></td>
-						<td align="right" ><%= number_to_currency(tipo[:total]) %> 		  </td>
-					</tr>
-				<% end %>
-			</table>
-		</div>
-	</div>
+  <div id="expenses" class="row" >
+    <div class="col-lg-12" >
+      <h3>Classificações de Despesas:</h3>
+      <table class="table">
+        <tr>
+          <th>Descrição</th>
+          <th style="text-align:right" >Valor líquido</th>
+          <th style="text-align:right" >Valor total</th>
+        </tr>
+        <% @despesas.totais_por_descricao.each do |tipo| %>
+          <tr>
+            <td><%= tipo[:descricao] %></td>
+            <td align="right" ><%= number_to_currency(tipo[:total_liquido]) %></td>
+            <td align="right" ><%= number_to_currency(tipo[:total]) %>      </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-	<div class="paginator-wrapper" >
-		<%= link_to "Ver detalhes das despesas", deputado_despesas_path(@deputado), :class => "btn btn-primary btn-yellow" %>
-	</div>
+  <div class="paginator-wrapper" >
+    <%= link_to "Ver detalhes das despesas", deputado_despesas_path(@deputado), :class => "btn btn-primary btn-yellow" %>
+  </div>
 
-	<div class="row">
-		<ul class="list-unstyled" >
-			<li> <span class='label'>Fonte dos dados:</span>
-			  <ul>
-			    <li><%= link_to(nil, detalhe_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
-			    <li><%= link_to(nil, 'http://www.tse.jus.br/eleicoes/estatisticas/estatisticas-candidaturas-2014', target: '_blank') %></li>
-			  </ul>
-			</li>
-		</ul>
-	</div>
+  <div class="row">
+    <ul class="list-unstyled" >
+      <li> <span class='label'>Fonte dos dados:</span>
+        <ul>
+          <li><%= link_to(nil, detalhe_deputado_url(@deputado.id_cadastro), target: '_blank') %></li>
+          <li><%= link_to(nil, 'http://www.tse.jus.br/eleicoes/estatisticas/estatisticas-candidaturas-2014', target: '_blank') %></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
