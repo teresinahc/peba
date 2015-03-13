@@ -1,9 +1,16 @@
 =====
 PEBA
 =====
-[![Build Status](https://travis-ci.org/teresinahc/peba.svg?branch=master)](https://travis-ci.org/teresinahc/peba)
-[![Code Climate](https://codeclimate.com/github/teresinahc/peba/badges/gpa.svg)](https://codeclimate.com/github/teresinahc/peba)
-[![Test Coverage](https://codeclimate.com/github/teresinahc/peba/badges/coverage.svg)](https://codeclimate.com/github/teresinahc/peba)
+
+<a href="https://travis-ci.org/teresinahc/peba" target="_blank">
+	<img src="https://travis-ci.org/teresinahc/peba.svg?branch=master" alt="Build Status">
+</a>
+<a href="https://codeclimate.com/github/teresinahc/peba" target="_blank">
+	<img src="https://codeclimate.com/github/teresinahc/peba/badges/gpa.svg" alt="Code Climate">
+</a>
+<a href="https://codeclimate.com/github/teresinahc/peba" target="_blank">
+	<img src="https://codeclimate.com/github/teresinahc/peba/badges/coverage.svg" alt="Test Coverage">
+</a>
 
 O Peba é um sistema que indexa em fonte única informações relacionadas às despesas de vários entidades governamentais com suporte para filtros e buscas avançadas.
 
@@ -51,3 +58,11 @@ Como executar?
 Como colaborar?
 ---
 Você pode nos ajudar abrindo issues através do github reportando bugs e nos enviando sugestões. Aos que desejam colaborar com código, peço que enviem Pull Requests para o branch "develop".
+
+Se desejar, pode seguir nosso <a href="https://trello.com/b/M1ldqi2V/peba" target="_blank">roadmap de desenvolvimento.</a>
+
+---
+Onde nos encontrar?
+---
+Disponibilizamos <a href="http://teresinahc.org/peba-feedback" target="_blank">um formulário</a> caso queira nos enviar alguma crítica ou sugestão. 
+Também estamos no: <a href="https://twitter.com/tocadopeba" target="_blank">@tocadopeba</a> siga o pebinha! =D 
