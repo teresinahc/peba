@@ -24,7 +24,7 @@ module Crawler
         end
       end
 
-      def fetch_zip(url, file_name)
+      def fetch_zip(url)
         file_name     = url.split("/").last
         zip_tmp_path  = tmp_file_path(file_name)
 

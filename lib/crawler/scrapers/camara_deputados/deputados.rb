@@ -3,12 +3,12 @@ module Crawler::Scrapers
     
     URL_DEPUTADOS = "http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterDeputados"
 
-    def dados_deputados
+    def lista_deputados
       fetch_url(URL_DEPUTADOS).body
     end
 
-    def parse_deputados
-      document  = Nokogiri::XML.parse(dados_deputados)
+    def parse_lista_deputados
+      document  = Nokogiri::XML.parse(lista_deputados)
       deputados = document.css("deputado")
       
       deputados.map do |deputado|
@@ -26,7 +26,7 @@ module Crawler::Scrapers
     end
 
     def salva_deputados
-      parse_deputados.each do |deputado|
+      parse_lista_deputados.each do |deputado|
         registro = Deputado.where(id_cadastro: deputado[:id_cadastro]).first_or_create
         registro.update(deputado)
       end
