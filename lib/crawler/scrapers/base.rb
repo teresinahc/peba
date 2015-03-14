@@ -1,4 +1,6 @@
 require 'open-uri'
+require 'zip'
+
 module Crawler
   module Scrapers
     class Base
@@ -32,11 +34,7 @@ module Crawler
           file << open(url).read
         end
 
-        # system "wget #{url} #{zip_tmp_path} && unzip #{zip_tmp_path}"
-        # content = File.read("#{tmp_file_path(file_name)}.xml") { |io| io.read }
-        # system "rm -f #{tmp_file_path(file_name)}.xml"
-
-        tmp_file_path(file_name)
+        Zip::File.open(zip_tmp_path)
       end
 
       def tmp_file_path(file_name)
