@@ -20,9 +20,9 @@ class CamaraCollector < BaseCollector
     # PRIMEIRO TURNO: o suficiente para pegarmos os deputados
     # "UF";"Cargo";"Nr";"Candidato";"Partido";"Coligação";"Situação";"Votação";"% Válidos";
     if tipo == :eleitos
-      url = "http://inter04.tse.jus.br/ords/dwtse/f?p=201403:101:110001388088023:FLOW_EXCEL_OUTPUT_R80771993629315934_pt-br"
+      url = "https://raw.githubusercontent.com/juliobetta/eleicoes-2014/master/votos_eleitos_turno_1.csv"
     else # suplentes
-      url = "http://inter04.tse.jus.br/ords/dwtse/f?p=201403:101:281385371258783:FLOW_EXCEL_OUTPUT_R80771993629315934_pt-br"
+      url = "https://raw.githubusercontent.com/juliobetta/eleicoes-2014/master/votos_suplentes.csv"
     end
 
     dir  = "#{Rails.root}/tmp"
