@@ -51,6 +51,7 @@ module RecibosCollector
 
   def self.salva_despesa(filtro, link_despesa)
     despesa = Despesa.where(filtro).first
+    
     if despesa
       despesa.url_recibo = link_despesa
       despesa.save

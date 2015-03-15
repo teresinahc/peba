@@ -1,10 +1,21 @@
 module Crawler::Scrapers
   class CamaraDeputados::Deputados < Base
     
-    URL_DEPUTADOS = "http://www.camara.gov.br/SitCamaraWS/Deputados.asmx/ObterDeputados"
+    def initialize(url)
+      @xml_url = url
+    end
+
+    def capturar
+      parse_lista_deputados.each do |deputado|
+        registro = Deputado.where(id_cadastro: deputado[:id_cadastro]).first_or_create
+        registro.update(deputado)
+      end
+    end
+
+    private
 
     def lista_deputados
-      fetch_url(URL_DEPUTADOS).body
+      fetch_url(@xml_url).body
     end
 
     def parse_lista_deputados
@@ -22,13 +33,6 @@ module Crawler::Scrapers
           :uf               => deputado.css("uf").text,
           :id_cadastro      => deputado.css("ideCadastro").text.to_i
         }
-      end
-    end
-
-    def salva_deputados
-      parse_lista_deputados.each do |deputado|
-        registro = Deputado.where(id_cadastro: deputado[:id_cadastro]).first_or_create
-        registro.update(deputado)
       end
     end
 

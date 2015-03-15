@@ -1,10 +1,21 @@
 module Crawler::Scrapers
   class CamaraDeputados::Despesas < Base
 
-    URL_ZIP_DESPESAS = 'http://www.camara.gov.br/cotas/AnoAtual.zip'
+    def initialize(url)
+      @url_despesas = url
+    end
+
+    def capturar
+      despesas_atuais = Despesa.pluck(:id_cadastro, :cpf_cnpj, :numero)
+      parse_lista_despesas.each do |despesa|
+        Despesa.create(despesa) unless despesas_atuais.include?([despesa[:id_cadastro], despesa[:cpf_cnpj], despesa[:numero]])
+      end
+    end
+
+    private
 
     def extrai_lista_despesas
-      zip_entry = fetch_zip(URL_ZIP_DESPESAS).glob('*.xml').first
+      zip_entry = fetch_zip(@url_despesas).glob('*.xml').first
       xml_path  = File.join(TMP_PATH, zip_entry.name)
 
       File.delete(xml_path) if File.exists?(xml_path) 
@@ -52,13 +63,6 @@ module Crawler::Scrapers
       end
 
       return registros
-    end
-
-    def salva_despesas
-      despesas_atuais = Despesa.pluck(:id_cadastro, :cpf_cnpj, :numero)
-      parse_lista_despesas.each do |despesa|
-        Despesa.create(despesa) unless despesas_atuais.include?([despesa[:id_cadastro], despesa[:cpf_cnpj], despesa[:numero]])
-      end
     end
 
     def despesa_valida(xml)
