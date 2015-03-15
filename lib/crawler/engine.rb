@@ -11,6 +11,9 @@ module Crawler
 
       despesas  = Scrapers::CamaraDeputados::Despesas.new(URL_DESPESAS_ANO_ATUAL)
       despesas.capturar
+
+      recibos   = Scrapers::CamaraDeputados::RecibosDespesas.new
+      despesas.capturar
     end
 
   end

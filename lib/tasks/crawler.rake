@@ -1,14 +1,23 @@
-require "#{Rails.root}/lib/camara/camara_collector.rb"
-require "#{Rails.root}/lib/camara/recibos_collector.rb"
+# require "#{Rails.root}/lib/camara/camara_collector.rb"
+# require "#{Rails.root}/lib/camara/recibos_collector.rb"
+
+# namespace :crawler do
+#   desc "Baixar dados do site da camara dos deputados"
+#   task run: :environment do
+#     camara_collector = CamaraCollector.new
+#     camara_collector.recuperar_deputados
+#     camara_collector.recuperar_total_votos :eleitos
+#     camara_collector.recuperar_total_votos :suplentes
+#     camara_collector.recuperar_cota_parlamentar
+#     RecibosCollector.run
+#   end
+# end
+
 
 namespace :crawler do
-  desc "Baixar dados do site da camara dos deputados"
+  desc "Inicia captura de informações pelo crawler do peba"
+  
   task run: :environment do
-    camara_collector = CamaraCollector.new
-    camara_collector.recuperar_deputados
-    camara_collector.recuperar_total_votos :eleitos
-    camara_collector.recuperar_total_votos :suplentes
-    camara_collector.recuperar_cota_parlamentar
-    RecibosCollector.run
+    Crawler::Engine.run
   end
 end
