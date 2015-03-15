@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-
 module RecibosCollector
 
   def self.coleta_nu_deputado_id
