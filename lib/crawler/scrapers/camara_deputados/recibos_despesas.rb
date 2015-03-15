@@ -25,9 +25,7 @@ module Crawler::Scrapers
         (2015..Time.now.year).each do |year|
           (1..Time.now.month).each do |month|
             
-            url = "http://www.camara.gov.br/cota-parlamentar/cota-analitico"
-                + "?nuDeputadoId=#{deputados_select_ids[deputado.nome_parlamentar].to_s.rjust(2, '0')}"
-                + "&numMes=#{month.to_s.rjust(2, '0')}&numAno=#{year.to_s}&numSubCota="
+            url = "http://www.camara.gov.br/cota-parlamentar/cota-analitico?nuDeputadoId=#{deputados_select_ids[deputado.nome_parlamentar].to_s.rjust(2, '0')}&numMes=#{month.to_s.rjust(2, '0')}&numAno=#{year.to_s}&numSubCota="
             
             begin
               page = Nokogiri::HTML(open(url))

@@ -5,7 +5,7 @@ module Crawler
   module Scrapers
     class Base
       
-      TMP_PATH = Dir.tmpdir
+      TMP_PATH = File.join(Rails.root, 'tmp')
 
       def fetch_url(url, limit = 10, method = :get)
         raise ArgumentError, 'too many HTTP redirects' if limit == 0
