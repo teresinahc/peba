@@ -21,11 +21,11 @@ module Crawler
       recibos.capturar
 
       puts 'Atualizando votos dos deputados eleitos'
-      votos_deputados_eleitos   = Scrapers::CamaraDeputados::RecibosDespesas.new(URL_VOTOS_DEPUTADOS_ELEITOS)
+      votos_deputados_eleitos   = Scrapers::CamaraDeputados::DeputadosVotos.new(URL_VOTOS_DEPUTADOS_ELEITOS)
       votos_deputados_eleitos.capturar
 
       puts 'Atualizando votos dos deputados suplentes'
-      votos_deputados_eleitos   = Scrapers::CamaraDeputados::RecibosDespesas.new(URL_VOTOS_DEPUTADOS_SUPLENTES)
+      votos_deputados_eleitos   = Scrapers::CamaraDeputados::DeputadosVotos.new(URL_VOTOS_DEPUTADOS_SUPLENTES)
       votos_deputados_eleitos.capturar
     end
 
