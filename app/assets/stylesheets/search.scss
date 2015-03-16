@@ -1,49 +1,16 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_self
- *= require home
- */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 @media only screen and (max-width: 600px) {
   .search-result: {
     text-align:center
   };
 }
 
-/* Style */
-body {
-  background-color: rgba(51,51,51,1);
-}
-
-a{
-  color: #FDCA01;
-}
-
-.container {
-  position: relative;
-  top: 0;
-  padding-top: 7em;
-  padding-bottom: 4em;
-  margin-bottom: 0;
-}
 .logo-box {
   width: 200px;
   display: block;
   position: relative;
   margin: 30px auto 30px auto;
 }
+
 .peba-search {
   padding: 1.3em 0.8em 1em;
   max-width: 44em;
@@ -164,32 +131,6 @@ a{
   color: #333;
 }
 
-p {
-  color: #FFF;
-}
-
-p.small {
-  font-size:10px;
-}
-
-#expenses h3 {
-  color: #FFF;
-}
-#expenses table {
-  width: 100%;
-  color: #FFF;
-  margin-bottom: 30px;
-  thead th {
-    padding: 7px 5px;
-  }
-  tbody td {
-    padding: 5px 5px;
-  }
-  tbody tr:nth-child(odd) {
-    background-color: #444;
-  }
-}
-
 #description {
   color: #FFF;
   margin-bottom: 20px;
@@ -237,7 +178,7 @@ p.small {
 
 #update-info{
   display: block;
-  text-align: center;
+  // text-align: center;
   margin-bottom: 20px;
 }
 

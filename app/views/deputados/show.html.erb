@@ -1,42 +1,70 @@
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<div id="politico">
 
-<div id="logo" >
-  <a href="<%= root_path %>">
-    <%= image_tag 'peba_logo.png' %>
-  </a>
-</div>
-<div id="document" class="container">
-
-  <div id="description" class="row" >
-    <div class="col-lg-12" >
-      <h1 class="lead" ><%= @deputado.nome %></h1>
-      <small id="update-info" >Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %></small>
-      <div id="social" >
-        <iframe src="//www.facebook.com/plugins/like.php?href=<%= @opengraph[:url] %>&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=379390102214515" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;width:140px;padding-left:40px" allowTransparency="true"></iframe>
-        <a class="twitter-share-button"
-          href="https://twitter.com/share"
-          data-url="<%= @opengraph[:url] %>"
-          data-via="@pebadadospublicos">
-          Tweet
-        </a>
-        <a href="whatsapp://send" data-text="<%= @opengraph[:description] %>" data-href="<%= @opengraph[:url] %>" class="wa_btn wa_btn_s" style="display:none">Compartilhar</a>
-      </div>
-      <div class="row" >
-        <div class="col-lg-2 col-lg-offset-4" >
-          <div class="circle" >
+  <div class='jumbotron'>
+    <div class="container" >
+      <div class="info">
+        <center>
+          <div class="circle">
             <img src="<%= @deputado.url_foto %>" alt="">
           </div>
-        </div>
-        <div class="col-lg-6" > <%= render @deputado %> </div>
+
+          <h1><%= @deputado.nome.titleize_name %>
+
+          <p class='situacao-partido-estado'>
+            <%= "#{@deputado.partido}, #{@deputado.uf} - #{@deputado.situacao_candidatura}" %>
+          </p>
+
+          <div class='contato'>
+            <span class='email'>
+              <%= icon(:envelope) %> <%= mail_to(@deputado.email) %>
+            </span>
+
+            <div id="social" >
+              <%= render(
+                  partial: 'partials/social',
+                  locals: { url: @opengraph[:url], description: @opengraph[:description] }
+                )
+              %>
+            </div>
+        </center>
       </div>
     </div>
+
+    <div class='estatisticas'>
+      <div class='container'>
+        <center>
+          <ul>
+            <% unless @deputado.total_despesas.nil? %>
+              <li>
+                <p><%= number_to_currency(@deputado.total_despesas) %></p>
+                <span>gastos (a partir de 01/01/2015)</span>
+              </li>
+            <% end %>
+
+            <li>
+              <p><%= number_with_delimiter(@deputado.total_votos) %></p>
+              <span>votos</span>
+            </li>
+
+            <li>
+              <p><%= number_to_percentage(@deputado.porcentagem_votos, precision: 2) %></p>
+              <span>votos válidos</span>
+            </li>
+          </ul>
+        </center>
+      </div>
+    </div>
+
   </div>
 
+  <div id="expenses" class="container" >
+    <small id="update-info text-right" >
+      Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %>
+    </small>
 
-  <div id="expenses" class="row" >
     <div class="col-lg-12" >
       <h3>Classificações de Despesas:</h3>
-      <table class="table">
+      <table class="table table-hover">
         <tr>
           <th>Descrição</th>
           <th style="text-align:right" >Valor líquido</th>
