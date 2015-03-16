@@ -23,7 +23,7 @@ describe DeputadosController, type: :controller do
       it 'deve exibir total de votos' do
         get :index
 
-        expect(response.body).to have_content("Total de votos")
+        expect(response.body).to have_content("votos")
       end
     end
 
@@ -59,9 +59,9 @@ describe DeputadosController, type: :controller do
       it 'deve exibir o total de votos, votos validos e situacao' do
         get :show, id: @deputado.id
 
-        expect(response.body).to have_content("Total de votos")
-        expect(response.body).to have_content("Votos válidos")
-        expect(response.body).to have_content("Situação")
+        expect(response.body).to have_content("votos")
+        expect(response.body).to have_content("votos válidos")
+        expect(response.body).to have_content(@deputado.situacao_candidatura)
       end
     end
   end
