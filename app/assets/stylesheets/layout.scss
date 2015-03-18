@@ -1,4 +1,5 @@
 @import '_variables';
+@import '_pagination';
 
 body {
   // padding-top: 50px;
@@ -6,9 +7,9 @@ body {
   background: $light-gray;
 }
 
-a { color: $amber }
+// a { color: $amber }
 
-.paginator-wrapper { text-align:center }
+
 
 
 /*
