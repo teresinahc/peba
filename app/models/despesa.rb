@@ -30,5 +30,8 @@ class Despesa < ActiveRecord::Base
     mais_novos.where(filtro)
   end
 
-
+  def self.por_mes
+    total = Despesa.select('num_ano, num_mes').group([:num_ano, :num_mes]).having('num_ano > 0').total_gasto
+    total.group_by{|key, value| key[0] } # agrupar por ano
+  end
 end

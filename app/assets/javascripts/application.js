@@ -13,4 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require turbolinks
+//= require highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/modules/exporting
+//= require module
+//= require_tree ./extensions
+//= require ./application/bootstrap.js
+//= require_tree ./application/modules/estatisticas/graficos
+//= require ./application/modules/estatisticas/init
+
+$(function() {
+  Peba.Application.run();
+});

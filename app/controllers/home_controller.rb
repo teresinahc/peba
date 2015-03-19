@@ -14,6 +14,12 @@ class HomeController < ApplicationController
     }
   end
 
+
+  def gasto_total
+    @gastos = Despesa.por_mes
+  end
+
+
   def aleatorio
     deputado = Deputado.aleatorios.first
     redirect_to deputado_path deputado
