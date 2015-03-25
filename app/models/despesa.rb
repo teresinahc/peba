@@ -30,8 +30,22 @@ class Despesa < ActiveRecord::Base
     mais_novos.where(filtro)
   end
 
-  def self.por_mes
-    total = Despesa.select('num_ano, num_mes').group([:num_ano, :num_mes]).having('num_ano > 0').total_gasto
-    total.group_by{|key, value| key[0] } # agrupar por ano
+
+  # retorna gastos anuais mes a mes
+  def self.mensal
+    default = Hash[(1..12).collect {|n| [n, nil]}]
+
+    total = Despesa.group([:num_ano, :num_mes]).having('num_ano > 0').total_gasto
+
+    # output = [{ano1 => {mes1 => valor, mes2 => valor, ...}}, {ano2 => {mes1 => valor, ...}}]
+    total.group_by{|key, value| key[0] }.map do |ano, valores|
+      { ano => default.merge(Hash[valores.collect {|mes, valor| [mes[1], valor.to_f]}]) }
+    end
+  end
+
+
+  # retorna gastos anuais
+  def self.anual
+    Despesa.group(:num_ano).having('num_ano > 0').total_gasto
   end
 end

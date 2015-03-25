@@ -32,16 +32,7 @@
   <%= render partial: 'partials/navbar' %>
   <%= yield %>
 
-  <footer id="credits">
-    <div class='container'>
-      <nav>
-        <a href="http://teresinahc.org/wiki/index.php/Projetos:Peba" target="_blank" >Sobre o projeto</a>
-        <a href="http://teresinahc.org" target="_blank" >Teresina Hacker Clube</a>
-        <a href="https://github.com/teresinahc/camara_deputados_hack" target="_blank" >Github</a>
-        <a href="http://teresinahc.org/peba-feedback/" target="_blank" >Feedback</a>
-      </nav>
-    </div>
-  </footer>
+  <%= render partial: 'partials/footer' %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script type="text/javascript">window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>

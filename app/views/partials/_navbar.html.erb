@@ -8,13 +8,7 @@
 
     <div class='collapse navbar-collapse'>
       <ul class='nav navbar-nav'>
-        <% unless(current_page?(controller: :home)) %>
-          <li><%= link_to 'Início', root_path %></li>
-        <% end %>
-        <li><%= link_to 'Sobre o projeto',       'http://teresinahc.org/wiki/index.php/Projetos:Peba',  target: '_blank' %></li>
-        <li><%= link_to 'Teresina Hacker Clube', 'http://teresinahc.org',                               target: '_blank' %></li>
-        <li><%= link_to 'Github',                'https://github.com/teresinahc/camara_deputados_hack', target: '_blank' %></li>
-        <li><%= link_to 'Feedback',              'http://teresinahc.org/peba-feedback/',                target: '_blank' %></li>
+        <%= render partial: 'partials/common_links' %>
       </ul>
 
       <div class='nav navbar-form navbar-right'>

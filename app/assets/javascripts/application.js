@@ -19,8 +19,8 @@
 //= require module
 //= require_tree ./extensions
 //= require ./application/bootstrap.js
-//= require_tree ./application/modules/estatisticas/graficos
-//= require ./application/modules/estatisticas/init
+//= require_tree ./application/utils
+//= require_tree ./application/modules
 
 $(function() {
   Peba.Application.run();

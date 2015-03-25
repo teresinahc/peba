@@ -1,5 +1,5 @@
-@gastos.each do |ano, valores|
-  json.set! ano.to_s do
-    json.array! valores.map! {|k,v| v.to_f }
+@gastos.each do |ano|
+  json.set! ano.keys.first.to_s do
+    json.array! ano[ano.keys.first].values
   end
 end

@@ -21,13 +21,17 @@ Module('Peba.Estatisticas', function(Estatisticas) {
    * @param  {Function} transformer
    */
   API.prototype.criarGrafico = function(uri, options, transformer) {
+    var chart = null;
+
     transformer = transformer || function(options, data) {
       options.series[0].data = data;
       return options;
     };
 
     $.getJSON(base_url(uri), function(data) {
-      if(data) new Highcharts.Chart(transformer(options, data));
+      if(data)  {
+        chart = new Highcharts.Chart(transformer(options, data));
+      }
     });
   };
 
@@ -39,13 +43,14 @@ Module('Peba.Estatisticas', function(Estatisticas) {
    */
   API.prototype.recursosPorMes = function(uri, options) {
     this.criarGrafico(uri, options, function(options, data) {
-      console.log(data);
-      $.each(data, function(key, value) {
+      $.each(data, function(key, values) {
+        // values = values.filter(function(v) { return v !== null; } );
         options.series.push({
           name: key,
-          data: value
+          data: values
         });
       });
+
       return options;
     });
   };
@@ -68,11 +73,12 @@ Module('Peba.Estatisticas', function(Estatisticas) {
    * Gastos anuais por mes
    */
   Estatisticas.fn.gastoTotalPorMes = function() {
-    if($('#gasto-total-por-mes').length) {
+    var container = 'gasto-total-por-mes';
+
+    if($('#' + container).length) {
       internalAPI.recursosPorMes('gasto_total.json', Peba.Graficos.GastoTotalPorMes);
     }
   };
-
 
 
   Peba.Application.addInitializer(Estatisticas.fn.initialize.bind(Estatisticas.fn));

@@ -1,7 +1,7 @@
 Module('Peba.Graficos.RecursosPorMes', {
   chart: {
     type: 'column',
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
 
   credits: { enabled: false },
@@ -9,20 +9,33 @@ Module('Peba.Graficos.RecursosPorMes', {
   legend: { enabled: true },
 
   xAxis: {
-    categories: [
-      1,2,3,4,5,6,7,8,9,10,11,12
-    ]
+    categories: Highcharts.getOptions().lang.shortMonths,
+    labels: {
+      align: 'right',
+      style: {
+        fontSize: '13px',
+        fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+      }
+    }
   },
 
   yAxis: {
     allowDecimals: true,
-    min: 0
+    min: 0,
+    title: { enabled: true, text: "Valor em R$"},
+    labels: {
+      formatter:  function() {
+        // this.axis.defaultLabelFormatter.call(this);
+        var absolute = (Math.abs(this.value) / 1000000);
+        return this.value === 0 ? null : 'R$ ' + absolute + (absolute <= 1 ? ' Milhão' : ' Milhões')
+      }
+    }
   },
 
   tooltip: {
-    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+    headerFormat: '<span>{point.key}</span><table>',
     pointFormat:  '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                  '<td style="padding:0"><b>{point.y}</b></td></tr>',
+                  '<td style="padding:0"><b>R$ {point.y: ,.2f}</b></td></tr>',
     footerFormat: '</table>',
     shared: true,
     useHTML: true
@@ -30,8 +43,16 @@ Module('Peba.Graficos.RecursosPorMes', {
 
   plotOptions: {
     column: {
-      pointPadding: 0.2,
-      borderWidth: 0
+      dataLabels: {
+        enabled: false,
+        endOfTick: false,
+        crop: false,
+        overflow: 'none',
+        color:'contrast',
+        shadow: true,
+        textShadow: "0 0 6px contrast, 0 0 3px contrast",
+        format: "R$ {point.y: ,.2f}"
+      }
     }
   },
 
