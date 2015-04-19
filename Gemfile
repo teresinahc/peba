@@ -1,16 +1,21 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
-gem 'mysql2'
+gem 'mysql2', '0.3.18'
 
 
 # assets related gems
+source 'https://rails-assets.org' do
+  gem 'rails-assets-module'
+end
+
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sass-rails', '~> 5.0'
+gem 'highcharts-rails', '~> 3.0.0'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'nokogiri'
@@ -20,8 +25,7 @@ gem 'rails-i18n'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'will_paginate-bootstrap'
-gem "chartkick"
-gem "progress_bar"
+gem 'progress_bar'
 
 group :development do
   gem 'spring'

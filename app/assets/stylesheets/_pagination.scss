@@ -1,0 +1,33 @@
+@import '_variables';
+
+.paginator-wrapper {
+  text-align: center;
+
+  .btn {
+    color:#333;
+    border-color: $amber;
+  }
+
+  .btn-yellow {
+    background: $amber;
+  }
+}
+
+.pagination {
+  .active {
+    &:hover {
+      span{
+        background: $amber;
+        border-color: $amber;
+      }
+    }
+    span {
+      background: $amber;
+      border-color: $amber;
+    }
+  }
+}
+
+.pagination a, .pagination a span {
+  color: #333;
+}

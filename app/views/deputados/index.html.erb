@@ -1,12 +1,30 @@
-<div id="search-page" class="container">
+<%= render partial: 'partials/search_cover' %>
 
-  <%= render 'partials/search_form' %>
+<div id="search-page">
 
-  <div>
+  <div class='container'>
+
     <div id="info" class="col-lg-12" >
-      <h4 class="lead"> <b><%= @deputados.total_entries %></b> deputados foram encontrados para a pesquisa <b><%= params[:q] %></b> </h4>
+      <h4 class="lead">
+        <% if(@deputados.total_entries == 0) %>
+          Nenhum político foi encontrado para a pesquisa <b><%= params[:q] %></b>
+        <% else %>
+          <b><%= @deputados.total_entries %></b>
+          <%= 'político'.pluralize(@deputados.total_entries) %>
+          <%= 'foi'.pluralize(@deputados.total_entries) %>
+          <%= 'encontrado'.pluralize(@deputados.total_entries) %>
+          <% if(params[:q].present? and !params[:q].empty?) %>
+            para a pesquisa <b><%= params[:q] %></b>
+          <% end %>
+        <% end %>
+      </h4>
     </div>
-  </div>
+
+    <div class="col-lg-12">
+      <div class="paginator-wrapper">
+        <%= will_paginate @deputados, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
 
     <section id="search-results" class="col-lg-8 col-lg-offset-2">
       <% @deputados.each do |deputado| %>
@@ -33,10 +51,13 @@
                 </span>
           </div>
         </a>
-    <% end %>
-  </section>
+      <% end %>
+    </section>
 
-  <div class="paginator-wrapper" >
-    <%= will_paginate @deputados, renderer: BootstrapPagination::Rails %>
+    <div class="col-lg-12">
+      <div class="paginator-wrapper">
+        <%= will_paginate @deputados, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,47 @@
+@import '_variables';
+
+#politico {
+  .jumbotron {
+    background: $pattern-background !important;
+    color: white;
+    padding: 7rem 0 0;
+    h1 { font-size: 3rem; margin: 0; }
+    .circle { display: block; border: 2px solid white; }
+    .partido-estado { margin: 0; }
+    .situacao-partido-estado { margin: 5px 0 15px; font-size: 21px; }
+    .contato {
+      font-size: 1.2rem;
+      .email {
+        color: $amber;
+        a { color: $amber; }
+      }
+    }
+  }
+
+  .estatisticas {
+    margin: 4rem 0 .8rem 0;
+    padding: 1rem;
+    background-color: rgba(0,0,0,.3);
+    ul {
+      margin: 0; padding: 0;
+      li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 6rem;
+        &:last-child { margin: 0; }
+        p { margin: 0; font-size: 3rem; }
+        span { font-style: italic; font-size: 1.5rem; }
+      }
+    }
+  }
+
+  .fonte-dados {
+    .label { color: $dark-gray; padding: 0; }
+    ul {
+      padding: 0;
+      li {
+        list-style: none !important;
+      }
+    }
+  }
+}

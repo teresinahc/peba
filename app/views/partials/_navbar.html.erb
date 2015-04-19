@@ -1,0 +1,36 @@
+<% cache do %>
+
+<nav class='navbar navbar-default hidden-xs hidden-sm'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <a class='navbar-brand' href='<%= root_path %>'>
+        <%= image_tag 'peba_logo_navbar.png', alt: 'Peba' %>
+      </a>
+    </div>
+
+    <div class='collapse navbar-collapse'>
+      <ul class='nav navbar-nav'>
+        <%= render partial: 'partials/common_links' %>
+      </ul>
+
+      <div class='nav navbar-form navbar-right'>
+        <% if(current_page?(root_path)) %>
+
+          <div class='social'>
+            <%= render(
+                partial: 'partials/social',
+                locals: { url: @opengraph[:url], description: @opengraph[:description] }
+              )
+            %>
+          </div>
+
+        <% else %>
+          <%= link_to('Continue Cavando', aleatorio_path, class: 'btn btn-default btn-sm') %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<% end %>
