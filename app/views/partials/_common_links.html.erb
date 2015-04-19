@@ -1,4 +1,4 @@
-<% unless(current_page?(controller: :home)) %>
+<% unless(params[:controller] == 'home') %>
   <li><%= link_to 'Início', root_path %></li>
 <% end %>
 <li><%= link_to 'Sobre o projeto',       'http://teresinahc.org/wiki/index.php/Projetos:Peba',  target: '_blank' %></li>

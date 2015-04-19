@@ -1,17 +1,56 @@
-<ul class="list-unstyled" >
-  <% unless deputado.situacao_candidatura.nil? %>
-    <li>Situação: <%= deputado.situacao_candidatura %></li>
-  <% end %>
-  <li>Partido: <%= deputado.partido %></li>
-  <li>Estado: <%= deputado.uf %></li>
-  <li>Email: <a href="mailto:<%= deputado.email %>" ><%= deputado.email %></a></li>
-  <li><b>Total gasto (A partir de 01/01/2015): <%= number_to_currency(deputado.total_despesas) %></b></li>
+<div class='jumbotron'>
+  <div class="container" >
+    <div class="info">
+      <div class='text-center'>
+        <div class="circle center">
+          <img src="<%= deputado.url_foto %>" alt="">
+        </div>
 
-  <% unless deputado.porcentagem_votos.nil? %>
-    <li>Votos válidos: <%= number_to_percentage(deputado.porcentagem_votos, precision: 2) %></li>
-  <% end %>
+        <h1><%= deputado.nome.titleize_name %></h1>
 
-  <% unless deputado.total_votos.nil? %>
-    <li>Total de votos: <%= number_with_delimiter(deputado.total_votos) %></li>
-  <% end %>
-</ul>
+        <h3 class='situacao-partido-estado'>
+          <%= "#{deputado.partido}, #{deputado.uf} - #{deputado.situacao_candidatura}" %>
+        </h3>
+
+        <div class='contato'>
+          <span class='email'>
+            <%= icon(:envelope) %> <%= mail_to(deputado.email) %>
+          </span>
+        </div>
+
+        <div id="social" >
+          <%= render(
+              partial: 'partials/social',
+              locals: { url: @opengraph[:url], description: @opengraph[:description] }
+            )
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='estatisticas'>
+    <div class='container'>
+      <div class='text-center'>
+        <ul>
+          <% unless deputado.total_despesas.nil? %>
+            <li>
+              <p><%= number_to_currency(deputado.total_despesas) %></p>
+              <span>gastos (a partir de 01/01/2015)</span>
+            </li>
+          <% end %>
+
+          <li>
+            <p><%= number_with_delimiter(deputado.total_votos) %></p>
+            <span>votos</span>
+          </li>
+
+          <li>
+            <p><%= number_to_percentage(deputado.porcentagem_votos, precision: 2) %></p>
+            <span>votos válidos</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

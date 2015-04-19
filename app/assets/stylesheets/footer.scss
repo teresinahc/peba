@@ -1,8 +1,15 @@
 @import '_variables';
+@import 'bootstrap/_variables';
+
+@media (min-width: 768px) {
+  footer .pull-right {
+    display:block;
+  }
+}
 
 footer {
   margin-top: 15rem;
-  background-color: $blue;
+  background-color: $dark-blue;
 
   .body {
     min-height: 100px;

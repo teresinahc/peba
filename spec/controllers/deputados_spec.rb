@@ -20,15 +20,18 @@ describe DeputadosController, type: :controller do
     end
 
     context 'via html' do
-      it 'deve exibir total de votos' do
-        get :index
+      before(:each) { get :index}
 
+      it 'deve exibir total de votos' do
         expect(response.body).to have_content('votos')
       end
 
       it 'deve exibir link Início' do
-        get :index
         expect(response.body).to have_link('Início')
+      end
+
+      it 'deve exibir campo de busca no rodapé' do
+        expect(response.body).to have_selector('footer .search')
       end
     end
 
@@ -36,9 +39,13 @@ describe DeputadosController, type: :controller do
       it 'deve retornar resultado para cada parametro' do
         [:nome, :nome_parlamentar, :partido, :matricula, :url_foto, :email, :uf].each do |attr|
           get :index, params: {q: @deputado[attr]}, format: :json
-
           expect(response.body).to_not be_blank
         end
+      end
+
+      it 'nao deve exibir logo no cover' do
+        get :index, params: {q: @deputado[:nome]}
+        expect(response.body).to_not have_selector('#logo')
       end
     end
   end

@@ -1,7 +1,15 @@
 <%= form_tag deputados_path, method: 'get', enforce_utf8: false do %>
   <div class="form-group" >
     <div class="input-group">
-        <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Procure por um deputado', autofocus: true %>
+      <%= text_field_tag :q, params[:q],
+        {
+          class: 'form-control',
+          placeholder: 'Procure por um deputado',
+          autocomplete: 'off',
+          autofocus: current_page?(root_path)
+        }
+      %>
+
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit">Cavar</button>
       </span>

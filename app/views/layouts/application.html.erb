@@ -18,15 +18,14 @@
   <% if defined? @page_info[:description] %>
     <meta name="description" content="<%= @page_info[:description] %>" >
   <% else %>
-    <meta name="description" content="O Peba é um sistema que indexa em fonte
-    única informações relacionadas às despesas de vários entidades
-    governamentais com suporte para filtros e buscas avançadas." >
+    <meta name="description" content="<%= app_description %>" >
   <% end %>
 
   <link rel="icon" type="image/png" href="<%= image_path('favicon.png') %>" />
-  <%= stylesheet_link_tag :application, media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag :application, media: 'all'%>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
   <%= render partial: 'partials/navbar' %>

@@ -1,57 +1,19 @@
-<div class='jumbotron'>
-  <div class="container">
-
-    <div class="row">
-      <div class="center-box">
-        <div id="logo" >
-          <a href="<%= root_path %>" >
-            <%= image_tag 'peba_logo.png' %>
-          </a>
-        </div>
-
-        <div id="search-form" class="peba-search col-lg-8 col-sm-10">
-          <%= render 'partials/search_form' %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row" >
-      <div id="info" class="col-lg-12" >
-        <a href="<%= aleatorio_path %>" class="btn btn-default" >
-          Cavada Aleatória
-        </a>
-      </div>
-    </div>
-
-    <div class="row hidden-lg" >
-      <div class="col-lg-12" id="social-share" >
-        <iframe src="//www.facebook.com/plugins/like.php?href=<%= @opengraph[:url] %>&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=379390102214515" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;width:140px;padding-left:40px" allowTransparency="true"></iframe>
-        <a class="twitter-share-button"
-          href="https://twitter.com/share"
-          data-url="<%= @opengraph[:url] %>"
-          data-via="tocadopeba">
-          Tweet
-        </a>
-        <a href="whatsapp://send" data-text="<%= @opengraph[:description] %>" data-href="<%= @opengraph[:url] %>" class="wa_btn wa_btn_s" style="display:none">Compartilhar</a>
-      </div>
-    </div>
-
-    <!--
-    <div class="row" >
-      <div class="col-gl-12" >
-        <div id="video-wrapper" >
-          <iframe width="502" height="282" src="https://www.youtube.com/embed/96meq3ACiCk" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    -->
-
-  </div>
-</div>
+<%= render partial: 'partials/search_cover' %>
 
 <div class='container'>
-  <div class="col-gl-12" >
-    <div class='grafico' id='gasto-total-por-mes'></div>
+
+  <div class='row' >
+    <!-- <div class='col-gl-12' >
+      <div id='video-wrapper' >
+        <iframe width='502' height='282' src='https://www.youtube.com/embed/96meq3ACiCk' frameborder='0' allowfullscreen></iframe>
+      </div>
+    </div> -->
+
+    <div class='col-gl-12' >
+      <section id='graficos'>
+        <h3 class='subtitle'>Gastos Anuais Registrados</h3>
+        <div class='grafico' id='gasto-total-por-mes'></div>
+      </section>
+    </div>
   </div>
 </div>

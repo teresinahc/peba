@@ -2,14 +2,21 @@
 @import '_pagination';
 
 body {
-  // padding-top: 50px;
   font-size: $font-size;
   background: $light-gray;
 }
 
-/*
- * Global add-ons
- */
+h3.subtitle {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+}
+
+.center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none;
+}
 
 .sub-header {
   padding-bottom: 10px;
@@ -53,9 +60,6 @@ body {
   padding-left: 20px;
 }
 
-p {
-  color: #fff;
-}
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {

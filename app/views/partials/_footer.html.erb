@@ -1,43 +1,45 @@
+<% cache do %>
+
 <footer>
 
   <div class='body'>
     <div class='container'>
 
       <div class='row'>
-        <div class='col-md-3 search'>
-          <%= render partial: 'partials/search_form'  %>
-          <%= link_to('Continue Cavando', aleatorio_path, class: 'btn btn-default btn-sm') %>
+
+        <% if(current_page?(root_path)) %>
+          <div class='col-md-2 col-sm-6'></div>
+        <% else %>
+          <div class='col-md-5 col-sm-6 clearfix search'>
+            <%= render partial: 'partials/search_form'  %>
+            <%= link_to('Cavada Aleatória', aleatorio_path, class: 'btn btn-default btn-sm') %>
+          </div>
+        <% end %>
+
+
+        <div class='col-md-3 col-sm-6 clearfix'>
+          <h4>Menu</h4>
+          <ul>
+            <%= render partial: 'partials/common_links' %>
+          </ul>
         </div>
 
-        <div class='col-md-3'>
-          <div class='pull-right'>
-            <h4>Menu</h4>
-            <ul>
-              <%= render partial: 'partials/common_links' %>
-            </ul>
-          </div>
+        <div class='col-md-3 col-sm-6 clearfix social'>
+          <h4>Junte-se a nós</h4>
+          <iframe
+            src="https://ghbtns.com/github-btn.html?user=teresinahc&repo=peba&type=fork&count=true"
+            frameborder="0"
+            scrolling="0"
+            width="170px"
+            height="20px">
+          </iframe>
+
+          <%= render partial: 'partials/social', locals: {url: root_url, description: app_description } %>
         </div>
 
-        <div class='col-md-3 social'>
-          <div class='pull-right'>
-            <h4>Junte-se a nós</h4>
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=teresinahc&repo=peba&type=fork&count=true"
-              frameborder="0"
-              scrolling="0"
-              width="170px"
-              height="20px">
-            </iframe>
-
-            <%= render partial: 'partials/social', locals: {url: root_url, description: app_description } %>
-          </div>
-        </div>
-
-        <div class='col-md-3'>
-          <div class='pull-right'>
-            <h4>Realização</h4>
-            <%= link_to(image_tag('teresinahc.png', width: 80), 'http://teresinahc.org', title: 'Teresina Hacker Club') %>
-          </div>
+        <div class='col-md-1 col-sm-6 clearfix'>
+          <h4>Realização</h4>
+          <%= link_to(image_tag('teresinahc.png', width: 80), 'http://teresinahc.org', title: 'Teresina Hacker Club') %>
         </div>
       </div>
     </div>
@@ -48,15 +50,13 @@
     <div class='container'>
       <div class='row'>
         <div class='col-md-12'>
-          <span class='pull-left'>Peba &copy; <%= Time.now.year %>, Todos os direitos reservados</span>
-          <span class='pull-right'>
-            <a href='https://creativecommons.org/licenses/by-sa/4.0/'>
-              <img src='http://licensebuttons.net/l/by-sa/4.0/88x31.png' width='50'>
-            </a>
-          </span>
+          <%= image_tag 'peba_logo_navbar.png', alt: 'Peba', width: 20 %>
+          <span>Peba <%= Time.now.year %></span>
         </div>
       </div>
     </div>
   </div>
 
 </footer>
+
+<% end %>

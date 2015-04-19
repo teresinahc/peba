@@ -1,3 +1,5 @@
+<% cache do %>
+
 <nav class='navbar navbar-default hidden-xs hidden-sm'>
   <div class='container'>
     <div class='navbar-header'>
@@ -12,13 +14,15 @@
       </ul>
 
       <div class='nav navbar-form navbar-right'>
-        <% if(current_page?(controller: :home)) %>
+        <% if(current_page?(root_path)) %>
 
-          <%= render(
-              partial: 'partials/social',
-              locals: { url: @opengraph[:url], description: @opengraph[:description] }
-            )
-          %>
+          <div class='social'>
+            <%= render(
+                partial: 'partials/social',
+                locals: { url: @opengraph[:url], description: @opengraph[:description] }
+              )
+            %>
+          </div>
 
         <% else %>
           <%= link_to('Continue Cavando', aleatorio_path, class: 'btn btn-default btn-sm') %>
@@ -28,3 +32,5 @@
     </div>
   </div>
 </nav>
+
+<% end %>

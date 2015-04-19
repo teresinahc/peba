@@ -22,12 +22,8 @@
 }
 
 #info {
-  color:#FFF;
   text-align:center;
   margin:15px 0;
-  b {
-    color: #FDCA01;
-  }
 }
 
 #results {
@@ -77,15 +73,17 @@
 .search-result {
   display: block;
   padding: 30px;
-  border-bottom:1px solid #444;
+  border-bottom:1px solid #ccc;
+
+  .circle {
+    border: 2px solid white;
+  }
+
   &:hover {
-    background: #444;
+    background: #e5e5e5;
   }
-  .name{
-    color: #FDCA01;
-  }
+
   ul li {
-    color: #FFF;
     font-size: 17px;
   }
   .more-infos {
@@ -168,8 +166,4 @@
   width: 502px;
   height: 282px;
   margin: 0 auto;
-}
-
-#filter label {
-  color: #FFF;
 }
