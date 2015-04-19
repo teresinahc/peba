@@ -5,7 +5,19 @@
   <div class='container'>
 
     <div id="info" class="col-lg-12" >
-      <h4 class="lead"> <b><%= @deputados.total_entries %></b> deputados foram encontrados para a pesquisa <b><%= params[:q] %></b> </h4>
+      <h4 class="lead">
+        <% if(@deputados.total_entries == 0) %>
+          Nenhum político foi encontrado para a pesquisa <b><%= params[:q] %></b>
+        <% else %>
+          <b><%= @deputados.total_entries %></b>
+          <%= 'político'.pluralize(@deputados.total_entries) %>
+          <%= 'foi'.pluralize(@deputados.total_entries) %>
+          <%= 'encontrado'.pluralize(@deputados.total_entries) %>
+          <% if(params[:q].present? and !params[:q].empty?) %>
+            para a pesquisa <b><%= params[:q] %></b>
+          <% end %>
+        <% end %>
+      </h4>
     </div>
 
     <div class="col-lg-12">
