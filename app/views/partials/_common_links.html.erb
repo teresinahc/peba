@@ -1,7 +1,7 @@
 <% unless(params[:controller] == 'home') %>
-  <li><%= link_to 'Início', root_path %></li>
+  <li><%= link_to 'Início', root_path, title: 'Ir para a página inicial', accesskey: 'i' %></li>
 <% end %>
-<li><%= link_to 'Sobre o projeto',       'http://teresinahc.org/wiki/index.php/Projetos:Peba',  target: '_blank' %></li>
-<li><%= link_to 'Teresina Hacker Clube', 'http://teresinahc.org',                               target: '_blank' %></li>
-<li><%= link_to 'Github',                'https://github.com/teresinahc/camara_deputados_hack', target: '_blank' %></li>
-<li><%= link_to 'Feedback',              'http://teresinahc.org/peba-feedback/',                target: '_blank' %></li>
+<li><%= link_to 'Sobre o projeto', 'http://teresinahc.org/wiki/index.php/Projetos:Peba',  target: '_blank', title: 'Página sobre o projeto (Abre em uma nova janela)' %></li>
+<li><%= link_to 'Teresina Hacker Clube', 'http://teresinahc.org', target: '_blank', title: 'Página do Teresina Hacker Clube (Abre em uma nova janela)' %></li>
+<li><%= link_to 'Github', 'https://github.com/teresinahc/peba',  target: '_blank', title: 'Repositório no Github (Abre em uma nova janela)' %></li>
+<li><%= link_to 'Feedback', 'http://teresinahc.org/peba-feedback/', target: '_blank', title: 'Página para envio de Feedback (Abre em uma nova janela)' %></li>
