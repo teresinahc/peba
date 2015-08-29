@@ -26,6 +26,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'will_paginate-bootstrap'
 gem 'progress_bar'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem 'spring'
