@@ -37,6 +37,11 @@ Gems utilizadas
 ---
 Como executar?
 ---
+
+Primeiramente, no diretório `config`, crie uma cópia do arquivo `database.yml.template` com o nome `database.yml`. Abra este arquivo e modifique os valores de acordo com as configurações do seu banco de dados.
+
+**Caso já possua ambiente ruby/rails instalado**
+
 1. Instalar o Apache Solr: https://cwiki.apache.org/confluence/display/solr/Installing+Solr
 
 2. Instalar as dependências do projeto
@@ -54,6 +59,27 @@ Como executar?
 6. Iniciar o rails
     * `rails s` ou `guard`
 
+
+**Via Docker**
+
+Antes de mais nada, tenha certeza de que tenha `docker` e `docker-compose` instalado.
+
+No item `default` do arquivo `config/database.yml`, modifique as seguintes linhas:
+
+    password: rootpwd
+    host: db
+    port: 3306
+
+
+Após, faça o seguinte para iniciar.
+
+1. `docker-compose build`
+2. `docker-compose up`
+3. Em outra janela do terminal, execute o comando `make setup`
+
+Estes comandos só serão necessários caso seja a primeira vez que esteja rodando o sistema. Das próximas vezes, execute apenas o comando do passo **2**.
+
+
 ---
 Como colaborar?
 ---
@@ -64,5 +90,5 @@ Se desejar, pode seguir nosso <a href="https://trello.com/b/M1ldqi2V/peba" targe
 ---
 Onde nos encontrar?
 ---
-Disponibilizamos <a href="http://teresinahc.org/peba-feedback" target="_blank">um formulário</a> caso queira nos enviar alguma crítica ou sugestão. 
-Também estamos no: <a href="https://twitter.com/tocadopeba" target="_blank">@tocadopeba</a> siga o pebinha! =D 
+Disponibilizamos <a href="http://teresinahc.org/peba-feedback" target="_blank">um formulário</a> caso queira nos enviar alguma crítica ou sugestão.
+Também estamos no: <a href="https://twitter.com/tocadopeba" target="_blank">@tocadopeba</a> siga o pebinha! =D
