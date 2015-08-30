@@ -14,9 +14,8 @@ describe Deputados::DespesasController, type: :controller do
         get :index, deputado_id: @deputado.id, format: :json
 
         json = JSON.parse(response.body)
-        espero_que(json).tenha %w(id nome email partido uf url_foto total_despesas fonte despesas)
 
-        amostra = json['despesas'].first
+        amostra = json.first
         espero_que(amostra).tenha %w(data_emissao beneficiario cpf_cnpf valor_liquido valor_glosa valor_documento url_recibo)
       end
     end

@@ -11,9 +11,8 @@ describe DeputadosController, type: :controller do
         get :index, params: {q: deputado.nome}, format: :json
 
         json = JSON.parse(response.body)
-        espero_que(json).tenha %w(deputados total)
 
-        amostra = json['deputados'].first
+        amostra = json.first
         espero_que(amostra).tenha %w(id nome email partido uf url_foto total_despesas total_votos
                                       porcentagem_votos situacao_candidatura)
       end
@@ -59,10 +58,8 @@ describe DeputadosController, type: :controller do
         get :show, id: deputado.id, format: :json
 
         json = JSON.parse(response.body)
-        espero_que(json).tenha %w(id nome email partido uf url_foto total_despesas total_votos fonte despesas
-                                  porcentagem_votos situacao_candidatura)
 
-        amostra_despesa = json['despesas'].first
+        amostra_despesa = json.first
         espero_que(amostra_despesa).tenha %w(tipo total total_liquido)
       end
     end
