@@ -1,8 +1,4 @@
-json.total @despesas.total_entries
-json.partial! 'deputados/deputado', deputado: @deputado
-json.fonte cota_deputado_url(@deputado.id_cadastro)
-
-json.despesas @despesas do |despesa|
+json.array! @despesas do |despesa|
   json.data_emissao    despesa.data_emissao
   json.beneficiario    despesa.beneficiario
   json.cpf_cnpf        despesa.cpf_cnpj
