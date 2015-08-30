@@ -25,9 +25,8 @@ Module('Peba.Graficos.RecursosPorMes', {
     title: { enabled: true, text: "Valor em R$"},
     labels: {
       formatter:  function() {
-        // this.axis.defaultLabelFormatter.call(this);
-        var absolute = (Math.abs(this.value) / 1000000);
-        return this.value === 0 ? null : 'R$ ' + absolute + (absolute <= 1 ? ' Milhão' : ' Milhões')
+        var absolute = (Math.abs(this.value) / 1000);
+        return this.value === 0 ? null : 'R$ ' + absolute + ' Mil';
       }
     }
   },
