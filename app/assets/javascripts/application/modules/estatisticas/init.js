@@ -49,6 +49,15 @@ Module('Peba.Estatisticas', function(Estatisticas) {
           name: key,
           data: values
         });
+
+        if(Math.max.apply(null, values.filter(Number)) >= 1000000) {
+          options.yAxis.labels = {
+            formatter:  function() {
+              var absolute = (Math.abs(this.value) / 1000000);
+              return this.value === 0 ? null : 'R$ ' + absolute + (absolute <= 1 ? ' Milhão' : ' Milhões')
+            }
+          };
+        }
       });
 
       return options;
@@ -73,10 +82,11 @@ Module('Peba.Estatisticas', function(Estatisticas) {
    * Gastos anuais por mes
    */
   Estatisticas.fn.gastoTotalPorMes = function() {
-    var container = 'gasto-total-por-mes';
+    var container = $('#gasto-total-por-mes'), url;
 
-    if($('#' + container).length) {
-      internalAPI.recursosPorMes('gasto_total.json', Peba.Graficos.GastoTotalPorMes);
+    if(container.length) {
+      url = container.data('url');
+      internalAPI.recursosPorMes(url, Peba.Graficos.GastoTotalPorMes);
     }
   };
 

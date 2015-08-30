@@ -32,10 +32,11 @@ class Despesa < ActiveRecord::Base
 
 
   # retorna gastos anuais mes a mes
-  def self.mensal
+  def self.mensal(deputado_id = nil)
     default = Hash[(1..12).collect {|n| [n, nil]}]
 
-    total = Despesa.group([:num_ano, :num_mes]).having('num_ano > 0').total_gasto
+    total = (deputado_id.nil? ? Despesa : Despesa.where(deputado_id: deputado_id))
+              .group([:num_ano, :num_mes]).having('num_ano > 0').total_gasto
 
     # output = [{ano1 => {mes1 => valor, mes2 => valor, ...}}, {ano2 => {mes1 => valor, ...}}]
     total.group_by{|key, value| key[0] }.map do |ano, valores|

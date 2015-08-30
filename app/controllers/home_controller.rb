@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 
 
   def gasto_total
-    @gastos = Despesa.mensal
+    @gastos = Despesa.mensal params[:deputado_id]
   end
 
 
