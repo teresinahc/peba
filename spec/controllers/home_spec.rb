@@ -19,6 +19,15 @@ describe HomeController, type: :controller do
     end
   end
 
+  describe 'GET #sitemap' do
+    it 'deve exibir sitemap corretamente' do
+      get :sitemap, format: :xml
+
+      expect(response.body).to have_selector('urlset')
+      expect(response.body).to have_selector('url')
+    end
+  end
+
   # describe 'GET #gasto_total' do
   #   it 'deve exibir json com gastos anuais mes a mes'
   # end

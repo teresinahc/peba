@@ -26,4 +26,13 @@ class HomeController < ApplicationController
     deputado = Deputado.aleatorios.first
     redirect_to deputado_path deputado
   end
+
+  def sitemap
+    @host      = 'http://peba.teresinahc.org/'
+    @politicos = Deputado.all
+
+    respond_to do |format|
+      format.xml { render 'sitemap/index', layout: nil }
+    end
+  end
 end
