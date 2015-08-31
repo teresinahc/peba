@@ -51,4 +51,13 @@ class Deputado < ActiveRecord::Base
     !despesas.empty? ? despesas.mais_novos.first.updated_at : updated_at
   end
 
+
+  def slug
+    nome_parlamentar.parameterize
+  end
+
+
+  def to_param
+    "#{id}-#{slug}"
+  end
 end
