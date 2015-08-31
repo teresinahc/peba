@@ -10,9 +10,15 @@
   height: 0;
   li a {
     color: $gray-light !important;
-    &:hover {
+    &:hover,
+    &:focus {
       color: white !important;
       text-decoration: underline;
+    }
+    &[accesskey]:after {
+      content: "[ " attr(accesskey) " ]";
+      margin-left: 3px;
+      padding: 2px 4px;
     }
   }
   .navbar-brand img { width: 50px; }
@@ -20,5 +26,5 @@
 
 .jumbotron {
   background: $pattern-background !important;
-  color: white;
+  color: #333;
 }

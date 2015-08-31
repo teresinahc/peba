@@ -1,6 +1,6 @@
 @media only screen and (max-width: 600px) {
   .search-result: {
-    text-align:center
+    text-align: center;
   };
 }
 
@@ -22,15 +22,15 @@
 }
 
 #info {
-  text-align:center;
-  margin:15px 0;
+  text-align: center;
+  margin: 15px 0;
 }
 
 #results {
   .item {
-    text-align:center;
+    text-align: center;
     b {
-      display:block
+      display: block
     }
     img {
       display: inline-block;
@@ -40,7 +40,7 @@
       color: #FDCA01;
     }
     .amount {
-      color:#FFF;
+      color: #FFF;
     }
   }
 }
@@ -73,13 +73,14 @@
 .search-result {
   display: block;
   padding: 30px;
-  border-bottom:1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 
   .circle {
     border: 2px solid white;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: #e5e5e5;
   }
 
@@ -91,7 +92,8 @@
     background: #FDCA01;
     color: #333;
     border-color: #FDCA01;
-    &:hover{
+    &:hover
+    &:focus {
       background: #D1A805;
     }
   }
@@ -99,10 +101,10 @@
 
 
 #description {
-  color: #FFF;
+  color: #fff;
   margin-bottom: 20px;
   a {
-    color: #FDCA01;
+    color: #fdca01;
   }
   h1{
     text-align: center;
@@ -120,7 +122,9 @@
         li {
           margin-top: 5px;
           list-style: none;
-          &:first { margin-top: 0px; }
+          &:first { 
+            margin-top: 0px;
+          }
         }
       }
     }
@@ -143,7 +147,7 @@
   padding-bottom: 15px;
 }
 
-#update-info{
+#update-info {
   display: block;
   // text-align: center;
   margin-bottom: 20px;
@@ -159,10 +163,10 @@
 
 #social {
   text-align: center;
-  padding:10px 0;
+  padding: 10px 0;
 }
 
-#video-wrapper{
+#video-wrapper {
   width: 502px;
   height: 282px;
   margin: 0 auto;
