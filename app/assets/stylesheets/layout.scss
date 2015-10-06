@@ -18,6 +18,17 @@ h3.subtitle {
   float: none;
 }
 
+.circle {
+  height:150px;
+  width: 150px;
+  overflow: hidden;
+  background:#FFF;
+  border-radius: 75px;
+  display: inline-block;
+  margin:10px 0;
+  text-align: center;
+}
+
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
