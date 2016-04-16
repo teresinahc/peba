@@ -121,7 +121,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     highcharts-rails (3.0.10)
       railties (>= 3.1)
-    highline (1.6.21)
+    highline (1.7.8)
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0)
@@ -157,9 +157,10 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     options (2.3.2)
+    parallel (1.8.0)
     pr_geohash (1.0.0)
-    progress_bar (1.0.3)
-      highline (~> 1.6.1)
+    progress_bar (1.0.5)
+      highline (~> 1.6)
       options (~> 2.3.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -229,6 +230,7 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    ruby-progressbar (1.7.5)
     rubyzip (1.1.7)
     sass (3.4.12)
     sass-rails (5.0.1)
@@ -325,6 +327,7 @@ DEPENDENCIES
   launchy
   mysql2 (= 0.3.20)
   nokogiri
+  parallel
   progress_bar
   pry-rails
   rack-cors
@@ -335,6 +338,7 @@ DEPENDENCIES
   rb-fsevent
   rb-inotify
   rspec-rails
+  ruby-progressbar
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
@@ -349,3 +353,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate
   will_paginate-bootstrap
+
+BUNDLED WITH
+   1.10.6

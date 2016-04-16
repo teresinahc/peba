@@ -28,8 +28,8 @@ class CamaraCollector < BaseCollector
     dir  = "#{Rails.root}/tmp"
     file = "#{dir}/votos.csv"
 
-    system "mkdir -p #{dir}"
-    system "curl --silent #{url} > #{file}"
+    system "mkdir -p '#{dir}'"
+    system "curl --silent #{url} > '#{file}'"
     response = File.read(file).encode("utf-8", "iso-8859-1")
 
     # remove todas as linhas desnecessarias
@@ -41,9 +41,14 @@ class CamaraCollector < BaseCollector
 
 
   def recuperar_cota_parlamentar
-    content = self.fetch_zip("http://www.camara.gov.br/cotas/AnoAtual.zip","AnoAtual")
-    lista_cotas = CamaraParser.parse_cota_parlamentar(content)
-    CamaraUpdater.update_cotas_parlamentares(lista_cotas)
+    content = self.fetch_zip("http://www.camara.gov.br/cotas/AnoAtual.zip", "AnoAtual")
+
+    content.each_line(separator = '</DESPESA>') do |line|
+      despesa = CamaraParser.parse_cota_parlamentar(line)
+      if despesa.present?
+        CamaraUpdater.update_cotas_parlamentares(despesa)
+      end
+    end
   end
 
   # def recuperar_cota_parlamentar_analitica

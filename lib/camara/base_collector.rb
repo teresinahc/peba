@@ -21,8 +21,7 @@ class BaseCollector
     zipfile = url.split("/").last
     system "rm #{zipfile}"
     system "wget #{url} && unzip #{zipfile}"
-    content = File.read("#{file_name}.xml") { |io| io.read }
-    system "rm #{file_name}.xml"
-    content
+    system "xmllint --encode utf8 --format #{file_name}.xml > #{file_name}_formated.xml"
+    File.new("#{file_name}_formated.xml")
   end
 end

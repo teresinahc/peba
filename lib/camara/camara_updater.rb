@@ -10,15 +10,9 @@ class CamaraUpdater
   end
 
 
-  def self.update_cotas_parlamentares(despesas)
-    puts 'Sincronizando despesas'
-
-    despesas_atuais = Despesa.pluck(:id_cadastro, :cpf_cnpj, :numero)
-    despesas.each do |despesa|
-      if !despesas_atuais.include?([despesa[:id_cadastro], despesa[:cpf_cnpj], despesa[:numero]])
-        Despesa.create(despesa)
-      end
-    end
+  def self.update_cotas_parlamentares(despesa)
+    existe_despesa = Despesa.where(id_cadastro: despesa[:id_cadastro], cpf_cnpj: despesa[:cpf_cnpj], numero: despesa[:numero]).exists?
+    Despesa.create(despesa) if !existe_despesa
   end
 
 

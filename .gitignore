@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 AnoAtual.*
+AnoAtual_formated.*
 config/database.yml
 config/secrets.yml
 vendor/bundle
