@@ -16,5 +16,5 @@ AnoAtual_formated.*
 config/database.yml
 config/secrets.yml
 vendor/bundle
-
+/config/deploy.rb
 fun.jpg

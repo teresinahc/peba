@@ -29,6 +29,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'parallel'
 gem 'ruby-progressbar'
 gem 'chewy'
+gem 'mina'
 
 group :development do
   gem 'spring'

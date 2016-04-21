@@ -11,5 +11,8 @@ namespace :crawler do
     camara_collector.recuperar_total_votos :suplentes
     camara_collector.recuperar_cota_parlamentar
     RecibosCollector.run
+
+    puts 'Reindexando registros'
+    DeputadosIndex.import
   end
 end
