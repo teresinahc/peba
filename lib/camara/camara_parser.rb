@@ -31,6 +31,7 @@ class CamaraParser
       data_emissao = despesa.css('datEmissao').text
 
       registro = {
+        :ide_documento              => despesa.css('ideDocumento').text,
         :matricula                  => despesa.css('nuCarteiraParlamentar').text,
         :nome_parlamentar           => despesa.css('txNomeParlamentar').text,
         :beneficiario               => despesa.css('txtFornecedor').text,
