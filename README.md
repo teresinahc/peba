@@ -19,7 +19,7 @@ Softwares utilizados
 ---
 
 * Ruby on Rails
-* Solr
+* Elasticsearch
 
 ---
 Gems utilizadas
@@ -30,7 +30,7 @@ Gems utilizadas
 * bootstrap-sass
 * rails-i18n
 * sunspot_rails
-* sunspot_solr
+* elasticsearch
 * will_paginate-bootstrap
 * chartkick
 
@@ -42,7 +42,7 @@ Primeiramente, no diretório `config`, crie uma cópia do arquivo `database.yml.
 
 **Caso já possua ambiente ruby/rails instalado**
 
-1. Instalar o Apache Solr: https://cwiki.apache.org/confluence/display/solr/Installing+Solr
+1. Instalar o Elasticsearch: https://www.elastic.co/
 
 2. Instalar as dependências do projeto
     * `bundle install`
@@ -50,8 +50,8 @@ Primeiramente, no diretório `config`, crie uma cópia do arquivo `database.yml.
 3. Executar os comandos para criar o banco e tabelas
     * `rake db:create db:migrate`
 
-4. Iniciar o SOLR.
-    * `bundle exec rake sunspot:solr:start`
+4. Iniciar o Elasticsearch.
+    * elasticsearch
 
 5. Rodar os scripts de crawler. (Segure firme. Vai demorar um pouco...)
     * `rake crawler:run`
