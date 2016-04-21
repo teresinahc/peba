@@ -33,7 +33,7 @@ class CamaraParser
       registro = {
         :matricula                  => despesa.css('nuCarteiraParlamentar').text,
         :nome_parlamentar           => despesa.css('txNomeParlamentar').text,
-        :beneficiario               => despesa.css('txtBeneficiario').text,
+        :beneficiario               => despesa.css('txtFornecedor').text,
         :descricao                  => despesa.css('txtDescricao').text,
         :data_emissao               => data_emissao.empty? ? '' : Date.parse(data_emissao),
         :valor_documento            => despesa.css('vlrDocumento').text,
