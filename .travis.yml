@@ -5,10 +5,13 @@ rvm:
 
 bundler_args: --without development
 
+services:
+  - elasticsearch
+
 before_script:
   - cp config/database.yml.template config/database.yml
   - cp config/secrets.template.yml config/secrets.yml
-  - curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.10.3 bash
+  - sleep 10
 
 script:
   - RAILS_ENV=test bundle exec rake db:setup --trace

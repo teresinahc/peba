@@ -17,9 +17,4 @@ config/database.yml
 config/secrets.yml
 vendor/bundle
 
-/solr/data
-/solr/default
-/solr/development
-/solr/pids
-/solr/test
 fun.jpg

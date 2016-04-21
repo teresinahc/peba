@@ -23,12 +23,12 @@ gem 'will_paginate'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'rails-i18n'
 gem 'sunspot_rails'
-gem 'sunspot_solr'
 gem 'will_paginate-bootstrap'
 gem 'progress_bar'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'parallel'
 gem 'ruby-progressbar'
+gem 'chewy'
 
 group :development do
   gem 'spring'

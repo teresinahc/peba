@@ -2,12 +2,7 @@ class Deputado < ActiveRecord::Base
 
   has_many :despesas
 
-  searchable do
-    text :nome, :partido, :nome_parlamentar, :matricula, :url_foto, :email, :uf
-    text :despesas do
-      despesas.map { |despesa| [despesa.beneficiario, despesa.cpf_cnpj] }
-    end
-  end
+  update_index('deputados#deputado') { self }
 
   scope :com_total_despesas, -> {
      joins("LEFT JOIN despesas ON despesas.deputado_id = deputados.id")
@@ -33,11 +28,11 @@ class Deputado < ActiveRecord::Base
 
 
   def self.buscar(query, attrs = {})
-    hits           = self.search { fulltext query, attrs }.hits
-    deputados_ids  = hits.map { |hit| hit.primary_key }
+    fields = ['nome', 'partido', 'nome_parlamentar', 'matricula', 'email', 'uf', 'despesas.*']
+    deputados_ids = DeputadosIndex.query(multi_match: { query: query, fields: fields }).map { |d| d.id }
 
     # Busca por ID os registros encontrados pela busca
-    self.maiores_despesas.where(id: deputados_ids.map(&:to_i))
+    self.maiores_despesas.where(id: deputados_ids)
   end
 
 

@@ -1,7 +1,7 @@
 IMAGE_NAME = peba_web
 
 startup:
-	rake sunspot:solr:run &
+	elasticsearch &
 	bundle exec guard -i -P bundler rails
 
 setup:
