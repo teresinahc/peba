@@ -1,17 +1,20 @@
 require 'rails_helper'
 
 describe Deputado, type: :model do
-  it { should have_many(:despesas) }
+  it { is_expected.to have_many(:despesas) }
 
-  context 'busca' do
-    it 'deve buscar por nome independente da acentuação ou case' do
-      attrs    = FactoryGirl.attributes_for(:deputado).merge nome: "JOSÉ"
-      deputado = Deputado.create! attrs
-
-      %w(JOSE JOSÉ jose josé José Jose).each do |attr|
-        expect(Deputado.buscar attr).to_not be_nil
-      end
+  describe '#slug' do
+    it 'should return nome_parlamentar parameterized' do
+      subject.nome_parlamentar = 'José Augusto'
+      expect(subject.slug).to eq 'jose-augusto'
     end
+  end
 
+  describe '#to_param' do
+    it 'should return id and slug' do
+      subject.id = 66
+      subject.nome_parlamentar = 'José Augusto'
+      expect(subject.to_param).to eq '66-jose-augusto'
+    end
   end
 end
