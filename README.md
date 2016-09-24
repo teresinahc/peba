@@ -64,20 +64,24 @@ Primeiramente, no diretório `config`, crie uma cópia do arquivo `database.yml.
 
 Antes de mais nada, tenha certeza de que tenha `docker` e `docker-compose` instalado.
 
-No item `default` do arquivo `config/database.yml`, modifique as seguintes linhas:
+1. Copie o arquivo de exemplo do `docker-compose`:
 
-    password: rootpwd
-    host: db
-    port: 3306
+    cp docker-compose.yml.template docker-compose.yml
 
+2. Copie o arquivo `config/database.yml.template` ele já está pronto para ser usado com docker:
 
-Após, faça o seguinte para iniciar.
+    cp config/database.yml.template config/database.yml
 
-1. `docker-compose build`
-2. `docker-compose up`
-3. Em outra janela do terminal, execute o comando `make setup`
+3. Levante o banco de dados (se você não tiver as imagens o primeiro comando pode demorar um pouco):
 
-Estes comandos só serão necessários caso seja a primeira vez que esteja rodando o sistema. Das próximas vezes, execute apenas o comando do passo **2**.
+    docker-compose run app rake db:setup
+    docker-compose run app rake crawler:run
+
+4. Levante a app:
+
+    docker-compose up app
+
+Estes comandos só serão necessários caso seja a primeira vez que esteja rodando o sistema. Das próximas vezes, execute apenas o comando do passo **4**.
 
 
 ---

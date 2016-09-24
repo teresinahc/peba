@@ -1,0 +1,27 @@
+db:
+  image: mysql:5.6
+  ports:
+    - '3306'
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=true
+  volumes:
+    - ./data/db:/var/lib/mysql
+
+es:
+  image: elasticsearch
+  volumes:
+    - ./data/es:/usr/share/elasticsearch/data
+  expose:
+    - "9200"
+    - "9300"
+
+app:
+  build: .
+  command: rails server -b 0.0.0.0 -p 3000
+  volumes:
+    - .:/app
+  ports:
+    - '3000:3000'
+  links:
+    - db
+    - es
