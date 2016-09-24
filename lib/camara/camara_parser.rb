@@ -50,6 +50,7 @@ class CamaraParser
         :num_sub_cota               => despesa.css('numSubCota').text.to_i,
         :num_especificacao_sub_cota => despesa.css('numEspecificacaoSubCota').text.to_i,
         :deputado_id                => deputado.id,
+        :nu_deputado_id             => despesa.css('nuDeputadoId').text,
         :numero                     => despesa.css('txtNumero').text
       } unless deputado.nil?
     end
