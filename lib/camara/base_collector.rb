@@ -10,7 +10,6 @@ class BaseCollector
     when Net::HTTPRedirection then
       location = response['location']
       fetch(location, limit - 1)
-      location
     else
       response.value
     end

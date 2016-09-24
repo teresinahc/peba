@@ -47,7 +47,6 @@ class CamaraUpdater
       ['BRUNIELE FERREIRA GOMES',                  45381,  0.45, 'Eleito por média' ],
       ['JOAO HENRIQUE HOLANDA  CALDAS',            135929, 9.82, 'Eleito por QP'    ],
       ['GIVALDO DE SÁ GOUVEIA',                    82582,  5.96, 'Eleito por QP'    ],
-      ['ANTONIO PEDRO DE SIQUEIRA INDIO DA COSTA', 91523,  1.20, 'Eleito por QP'    ],
       ['ÁTILA SIDNEY LINS ALBUQUERQUE',            89453,  5.39, 'Eleito por média' ],
       ['JOAQUIM PASSARINHO PINTO DE SOUZA PORTO',  76148,  2.03, 'Eleito por QP'    ],
       ['JOVAIR DE OLIVEIRA ARANTES',               92945,  3.06, 'Eleito por QP'    ],
