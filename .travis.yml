@@ -10,7 +10,6 @@ services:
 
 before_script:
   - cp config/database.yml.template config/database.yml
-  - cp config/secrets.template.yml config/secrets.yml
   - sleep 10
 
 script:
