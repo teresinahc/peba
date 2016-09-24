@@ -14,7 +14,8 @@
 AnoAtual.*
 AnoAtual_formated.*
 config/database.yml
-config/secrets.yml
+docker-compose.yml
 vendor/bundle
 /config/deploy.rb
 fun.jpg
+/data/

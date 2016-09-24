@@ -33,11 +33,8 @@ WORKDIR /app
 # will be cached unless changes to one of those two files
 # are made.
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install --jobs 20 --retry 5
-
-
-# Copy the main application.
-COPY . ./
+RUN gem install --no-ri --no-rdoc foreman bundler && \
+  bundle install --jobs 20 --retry 5
 
 
 # Expose port 3000 to the Docker host, so we can access it
