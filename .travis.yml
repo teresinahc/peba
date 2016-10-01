@@ -10,6 +10,7 @@ services:
 
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - cp config/chewy.yml.travis config/chewy.yml
 
 script:
   - RAILS_ENV=test bundle exec rake db:setup --trace

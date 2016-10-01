@@ -68,9 +68,10 @@ Antes de mais nada, tenha certeza de que tenha `docker` e `docker-compose` insta
 
     cp docker-compose.yml.template docker-compose.yml
 
-2. Copie o arquivo `config/database.yml.template` ele já está pronto para ser usado com docker:
+2. Copie os arquivos `config/database.yml.template` e `config/chewy.yml.template`, eles já estão prontos para serem usados com docker:
 
     cp config/database.yml.template config/database.yml
+    cp config/chewy.yml.template config/chewy.yml
 
 3. Levante o banco de dados (se você não tiver as imagens o primeiro comando pode demorar um pouco):
 

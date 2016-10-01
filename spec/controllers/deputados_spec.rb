@@ -1,76 +1,112 @@
 require 'rails_helper'
 
 describe DeputadosController, type: :controller do
-  let(:deputado) { Deputado.create! FactoryGirl.attributes_for(:deputado) }
+  before do
+    create(:despesa, valor_liquido: 10, valor_documento: 100, deputado_id: deputy.id)
+    create(:despesa, valor_liquido: 12, valor_documento: 120, deputado_id: deputy.id)
+
+    create(:despesa, valor_liquido: 13, valor_documento: 130, deputado_id: john_doe.id)
+
+    DeputadosIndex.purge!
+    DeputadosIndex.import
+  end
+
+  let(:deputy) { create(:deputado, nome: "Deputado") }
+  let(:john_doe) { create(:john_doe) }
 
   render_views
 
   describe 'GET #index' do
-    context 'via json' do
-      it 'deve listar os deputados e exibe os atributos corretamente' do
-        get :index, params: {q: deputado.nome}, format: :json
+    context 'when using json' do
+      it 'should list deputies' do
+        get :index, q: "Deputado", format: :json
 
         json = JSON.parse(response.body)
 
-        amostra = json.first
-        espero_que(amostra).tenha %w(id nome email partido uf url_foto total_despesas total_votos
-                                      porcentagem_votos situacao_candidatura)
-      end
-    end
-
-    context 'via html' do
-      before(:each) { get :index, params: {q: deputado.nome}}
-
-      it 'deve exibir total de votos' do
-        expect(response.body).to have_content('votos')
+        expect(json.size).to be(1)
       end
 
-      it 'deve exibir link Início' do
-        expect(response.body).to have_link('Início')
+      it 'should not list non-matching deputy' do
+        get :index, q: "Deputado", format: :json
+
+        expect(response.body).not_to match("John Doe")
       end
 
-      it 'deve exibir campo de busca no rodapé' do
-        expect(response.body).to have_selector('footer .search')
-      end
-    end
+      context 'should correct return attributes for matching deputies' do
+        before do
+          get :index, q: deputy.nome, format: :json
+        end
 
-    context 'busca' do
-      it 'deve retornar resultado para cada parametro' do
-        [:nome, :nome_parlamentar, :partido, :matricula, :url_foto, :email, :uf].each do |attr|
-          get :index, params: {q: deputado[attr]}, format: :json
-          expect(response.body).to_not be_blank
+        it { expect(response.body).to match(%r["id":#{deputy.id}]) }
+        it { expect(response.body).to match(%r["total_votos":#{deputy.total_votos}]) }
+        it { expect(response.body).to match(%r["porcentagem_votos":#{deputy.porcentagem_votos}]) }
+        it { expect(response.body).to match(%r["total_despesas":"R\$ 22,00"]) }
+
+        %w(nome email partido uf url_foto situacao_candidatura).each do |attribute|
+          it { expect(response.body).to match(%r["#{attribute}":"#{deputy.send(attribute)}"]) }
         end
       end
 
-      it 'nao deve exibir logo no cover' do
-        get :index, params: {q: deputado.nome}
-        expect(response.body).to_not have_selector('#logo')
+      %w[nome nome_parlamentar partido matricula email uf].each do |param|
+        context "should search using #{param} attribute from deputy" do
+          it 'and returns correct deputy' do
+            get :index, q: deputy.send(param), format: :json
+
+            expect(response.body).to match deputy.nome
+          end
+
+          it 'and does not return incorrect deputy' do
+            get :index, q: deputy.send(param), format: :json
+
+            expect(response.body).not_to match 'John Doe'
+          end
+        end
+      end
+    end
+
+    context 'when using html' do
+      before do
+        get :index, q: deputy.nome
+      end
+
+      it { expect(response.body).to have_content(deputy.nome_parlamentar) }
+      it { expect(response.body).to have_content('Partido: PDSK') }
+      it { expect(response.body).to have_content('Estado: KD') }
+      it { expect(response.body).to have_content('Total de votos: 123') }
+      it { expect(response.body).to have_content('Despesas: R$ 22,00') }
+
+      it 'should not show info about non-matching deputy' do
+        expect(response.body).not_to have_content('John Doe')
       end
     end
   end
 
-
   describe 'GET #show' do
-    before(:each) { deputado.despesas << FactoryGirl.build(:despesa) }
+    context 'when using json' do
+      context 'should return correct information' do
+        before { get :show, id: deputy.id, format: :json }
 
-    context 'via json' do
-      it 'deve exibir o deputado e os atributos corretamente' do
-        get :show, id: deputado.id, format: :json
-
-        json = JSON.parse(response.body)
-
-        amostra_despesa = json.first
-        espero_que(amostra_despesa).tenha %w(tipo total total_liquido)
+        it { expect(response.body).to match %q[tipo":"descricao] }
+        it { expect(response.body).to match %q[total":"R\$ 220,00] }
+        it { expect(response.body).to match %q[total_liquido":"R\$ 22,00] }
       end
     end
 
-    context 'via html' do
-      it 'deve exibir o total de votos, votos validos e situacao' do
-        get :show, id: deputado.id
+    context 'when using html' do
+      before { get :show, id: deputy.id }
 
-        expect(response.body).to have_content('votos')
-        expect(response.body).to have_content('votos válidos')
-        expect(response.body).to have_content(deputado.situacao_candidatura)
+      context 'should return correct infomation' do
+        it { expect(response.body).to have_content('123 votos') }
+        it { expect(response.body).to have_content('10,00% votos válidos') }
+        it { expect(response.body).to have_content('Eleito') }
+      end
+
+      context 'should correct return @opengraph' do
+        it { expect(assigns(:opengraph)).to include(title: "Deputado: Deputado") }
+        it { expect(assigns(:opengraph)).to include(type: "website") }
+        it { expect(assigns(:opengraph)).to include(url: "http://test.host/deputados/#{deputy.id}") }
+        it { expect(assigns(:opengraph)).to include(image: "http://url.com/foto") }
+        it { expect(assigns(:opengraph)).to include(site_name: "Peba") }
       end
     end
   end
