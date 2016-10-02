@@ -1,0 +1,9 @@
+test:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  host:
+  port: 3306
+  database: peba_test
