@@ -30,6 +30,7 @@ gem 'parallel'
 gem 'ruby-progressbar'
 gem 'chewy'
 gem 'mina'
+gem 'puma'
 
 group :development do
   gem 'spring'
