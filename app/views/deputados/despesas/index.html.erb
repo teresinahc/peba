@@ -55,13 +55,9 @@
               <td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
               <td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
               <td align="center" >
-                <% if !despesa.url_recibo.blank? %>
-                  <a href="<%= despesa.url_recibo %>" target="_blank" >
-                    <span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
-                  </a>
-                <% else %>
-                  <span class="glyphicon glyphicon-remove-sign" ></span> Não disponível
-                <% end %>
+                <a href="<%= build_url(despesa.nu_deputado_id, despesa.num_ano, despesa.ide_documento) %>" target="_blank" >
+                  <span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
+                </a>
               </td>
             </tr>
           <% end %>
