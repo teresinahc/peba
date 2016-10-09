@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
   locales \
   nodejs \
   unzip \
-  elasticsearch
+  elasticsearch \
+  libxml2-utils
 
 
 # Use pt_BR.UTF-8 as our locale
