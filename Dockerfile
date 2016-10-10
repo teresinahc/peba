@@ -19,5 +19,7 @@ COPY Gemfile.lock Gemfile.lock
 RUN bundle install --jobs=20
 
 COPY . /var/app
+COPY config/chewy.yml.template /var/app/config/chewy.yml
+COPY config/database.yml.template /var/app/config/database.yml
 
 WORKDIR /var/app

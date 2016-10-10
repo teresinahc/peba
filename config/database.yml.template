@@ -50,6 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: peba_production
-  username: peba
-  password: <%= ENV['CAMARA_DEPUTADOS_HACK_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
