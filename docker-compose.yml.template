@@ -17,9 +17,9 @@ es:
 
 app:
   build: .
-  command: rails server -b 0.0.0.0 -p 3000
+  command: bundle exec puma -C config/puma.rb
   volumes:
-    - .:/app
+    - '.:/var/app'
   ports:
     - '3000:3000'
   links:
