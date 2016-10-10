@@ -1,0 +1,3 @@
+test:
+  host: 'localhost:9200'
+  prefix: 'test'

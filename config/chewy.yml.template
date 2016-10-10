@@ -1,7 +1,8 @@
 # config/chewy.yml
 # separate environment configs
 test:
-  host: 'localhost:9250'
+  host: 'es:9200'
   prefix: 'test'
+
 development:
-  host: 'localhost:9200'
+  host: 'es:9200'
