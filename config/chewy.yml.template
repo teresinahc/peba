@@ -6,3 +6,6 @@ test:
 
 development:
   host: 'es:9200'
+
+production:
+  host: <%= ENV['ELASTICSEARCH_URL'] %>

@@ -186,6 +186,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
+    puma (3.6.0)
     rack (1.6.0)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -349,6 +350,7 @@ DEPENDENCIES
   parallel
   progress_bar
   pry-rails
+  puma
   rack-cors
   rails (= 4.2.0)
   rails-assets-module!
@@ -371,6 +373,3 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate
   will_paginate-bootstrap
-
-BUNDLED WITH
-   1.10.6
