@@ -16,10 +16,11 @@ es:
     - "9300"
 
 app:
+  dockerfile: Dockerfile.dev
   build: .
   command: bundle exec puma -C config/puma.rb
   volumes:
-    - '.:/var/app'
+    - '.:/app'
   ports:
     - '3000:3000'
   links:
