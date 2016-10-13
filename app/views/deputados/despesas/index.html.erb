@@ -55,7 +55,7 @@
               <td align="right" ><%= number_to_currency(despesa.valor_glosa) %></td>
               <td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
               <td align="center" >
-                <a href="<%= build_url(despesa.nu_deputado_id, despesa.num_ano, despesa.ide_documento) %>" target="_blank" >
+                <a href="<%= build_receipt(despesa.nu_deputado_id, despesa.num_ano, despesa.ide_documento) %>" target="_blank" >
                   <span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
                 </a>
               </td>
