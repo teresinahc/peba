@@ -1,6 +1,4 @@
-=====
-PEBA
-=====
+![PEBA](https://github.com/teresinahc/peba/raw/master/app/assets/images/peba_logo.png)
 
 <a href="https://travis-ci.org/teresinahc/peba" target="_blank">
 	<img src="https://travis-ci.org/teresinahc/peba.svg?branch=master" alt="Build Status">
