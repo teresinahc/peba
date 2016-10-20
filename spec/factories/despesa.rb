@@ -20,5 +20,6 @@ FactoryGirl.define do
     num_especificacao_sub_cota 123
     numero 123
     url_recibo "http://www.url.com/recibo"
+    ide_documento "1234"
   end
 end
