@@ -44,6 +44,9 @@ class Despesa < ActiveRecord::Base
     end
   end
 
+  def self.total_of_cost
+    self.sum(:valor_liquido)
+  end
 
   # retorna gastos anuais
   def self.anual

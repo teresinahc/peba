@@ -135,4 +135,21 @@ describe Despesa, type: :model do
       expect(subject.anual).not_to have_key(2016)
     end
   end
+
+  describe '#total_of_cost' do
+    subject { Despesa }
+
+    before do
+      create(:despesa)
+      create(:despesa, num_ano: 2014, valor_liquido: 11.0)
+      create(:despesa, num_ano: 2014, valor_liquido: -25.0)
+    end
+
+    context 'when the returned value is' do
+      it 'negative' do
+        expect(subject.total_of_cost).to eq('-4.0')
+      end
+    end
+
+  end
 end
