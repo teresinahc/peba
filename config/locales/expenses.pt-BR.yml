@@ -1,0 +1,22 @@
+pt-BR:
+  deputados:
+    despesas:
+      index:
+        subtitle: "Detalhamento de Despesas"
+        last_update_at: "Última atualização em"
+        sum_of_expenses_of_current_filter: "Total de despesas para o filtro atual"
+        subtotal: "Subtotal"
+
+  activerecord:
+    attributes:
+      despesa:
+        classificacao: "Categoria"
+        year: "Ano"
+        month: "Mês"
+        data_emissao: "Data"
+        beneficiario: "Beneficiário"
+        cpf_cnpj: "CPF/CNPJ"
+        valor_liquido: "Valor líquido"
+        valor_glosa: "Valor de glosa"
+        valor_documento: "Valor do documento"
+        receipt: "Comprovante"

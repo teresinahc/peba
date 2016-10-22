@@ -4,48 +4,48 @@
 
   <div id="despesas" class="container" >
     <div class="col-lg-12" >
-      <h3 class='subtitle'>Detalhamento de Despesas</h3>
+      <h3 class='subtitle'><%= t '.subtitle' %></h3>
 
       <div id="filter" class="row" >
         <%= form_tag(deputado_despesas_path(@deputado.id), class: 'inline-form', method: 'get') do |f| %>
           <div class="col-lg-3" >
             <div class="form-group" >
-              <label>Categoria</label>
-              <%= select_tag('descricao',  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), include_blank: 'Todos', class: 'form-control', onchange: 'this.form.submit()') %>
+              <label for="descricao"><%= Despesa.human_attribute_name(:classificacao) %></label>
+              <%= select_tag(:descricao,  options_for_select(@deputado.despesas.classificacoes, selected: params[:descricao]), include_blank: t('options.all'), class: 'form-control', onchange: 'this.form.submit()') %>
             </div>
           </div>
           <div class="col-lg-2" >
             <div class="form-group" >
-              <label for="">Ano</label>
-              <%= select_year(params[:num_ano].to_i, {start_year: 2015, end_year: Date.today.year, prompt: 'Todos'}, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
+              <label for="date_year"><%= Despesa.human_attribute_name(:year) %></label>
+              <%= select_year(params[:num_ano].to_i, { start_year: 2015, end_year: Date.current.year, prompt: t('options.all') }, name: 'num_ano', class: 'form-control', onchange: 'this.form.submit()') %>
             </div>
           </div>
           <div class="col-lg-2" >
             <div class="form-group" >
-              <label for="">Mês</label>
-              <%= select_month(params[:num_mes].to_i, {prompt: 'Todos'}, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
+              <label for="date_month"><%= Despesa.human_attribute_name(:month) %></label>
+              <%= select_month(params[:num_mes].to_i, { include_blank: t('options.all') }, class: 'form-control', onchange: 'this.form.submit()', name: 'num_mes') %>
             </div>
           </div>
         <% end %>
       </div>
 
-      <small id="update-info text-right" >
-        Última atualização em: <%= l @deputado.data_ultima_atualizacao, format: :short %>
-      </small>
       <div id="update-info text-right" >
-        Total de despesas para o filtro atual: <b><%= number_to_currency(@despesas.total_of_cost) %></b>
+        <%= t '.last_update_at' %>: <%= l @deputado.data_ultima_atualizacao, format: :short %>
+      </div>
+      <div id="update-info text-right" >
+        <%= t '.sum_of_expenses_of_current_filter' %>: <b><%= number_to_currency(@despesas.total_of_cost) %></b>
       </div>
 
       <table class="table table-hover">
         <thead>
           <tr>
-            <th width='100'>Data</th>
-            <th>Beneficiário</th>
-            <th>CPF/CNPJ</th>
-            <th>Valor líquido<small>*</small></th>
-            <th>Valor de Glosa<small>**</small></th>
-            <th >Valor do documento<small>***</small></th>
-            <th align="center" >Comprovante</th>
+            <th width='100'><%= Despesa.human_attribute_name :data_emissao %></th>
+            <th><%= Despesa.human_attribute_name :beneficiario %></th>
+            <th><%= Despesa.human_attribute_name :cpf_cnpj %></th>
+            <th><%= Despesa.human_attribute_name :valor_liquido %><small>*</small></th>
+            <th><%= Despesa.human_attribute_name :valor_glosa %><small>**</small></th>
+            <th><%= Despesa.human_attribute_name :valor_documento %><small>***</small></th>
+            <th align="center"><%= Despesa.human_attribute_name :receipt %></th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +59,7 @@
               <td align="right" ><%= number_to_currency(despesa.valor_documento) %></td>
               <td align="center" >
                 <a href="<%= build_receipt(despesa.nu_deputado_id, despesa.num_ano, despesa.ide_documento) %>" target="_blank" >
-                  <span class="glyphicon glyphicon-circle-arrow-down" ></span> Visualizar
+                  <span class="glyphicon glyphicon-circle-arrow-down" ></span> <%= t 'actions.view' %>
                 </a>
               </td>
             </tr>
@@ -69,8 +69,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td align="right"><b>Subtotal:</b></td>
-            <td align="right"><b><%= number_to_currency(sum_partial_of_document_value(@despesas)) %></b></td>
+            <td align="right"><strong><%= t '.subtotal' %>:</strong></td>
+            <td align="right"><strong><%= number_to_currency(sum_partial_of_document_value(@despesas)) %></strong></td>
             <td></td>
           </tr>
         </tbody>
