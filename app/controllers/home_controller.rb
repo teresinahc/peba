@@ -8,8 +8,8 @@ class HomeController < ApplicationController
     @opengraph = {
       title:        'Peba - Indexador de Dados Públicos',
       type:         'website',
-      url:          request.base_url,
-      image:        request.base_url + view_context.image_path('peba_logo_og.png'),
+      url:          root_url,
+      image:        view_context.image_url('peba_logo_og.png'),
       site_name:    'Peba',
       description:  'O Peba é um sistema que indexa em fonte única informações relacionadas às despesas de vários entidades ' <<
                     'governamentais com suporte para filtros e buscas avançadas.'
