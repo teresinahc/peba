@@ -66,21 +66,29 @@ Antes de mais nada, tenha certeza de que tenha `docker` e `docker-compose` insta
 
 1. Copie o arquivo de exemplo do `docker-compose`:
 
-    cp docker-compose.yml.template docker-compose.yml
+    ```
+    $ cp docker-compose.yml.template docker-compose.yml
+    ```
 
 2. Copie os arquivos `config/database.yml.template` e `config/chewy.yml.template`, eles já estão prontos para serem usados com docker:
 
-    cp config/database.yml.template config/database.yml
-    cp config/chewy.yml.template config/chewy.yml
+    ```
+    $ cp config/database.yml.template config/database.yml
+    $ cp config/chewy.yml.template config/chewy.yml
+    ```
 
 3. Levante o banco de dados (se você não tiver as imagens o primeiro comando pode demorar um pouco):
 
-    docker-compose run app rake db:setup
-    docker-compose run app rake crawler:run
+    ```
+    $ docker-compose run app rake db:setup
+    $ docker-compose run app rake crawler:run
+    ```
 
 4. Levante a app:
 
-    docker-compose up app
+    ```
+    $ docker-compose up app
+    ```
 
 Estes comandos só serão necessários caso seja a primeira vez que esteja rodando o sistema. Das próximas vezes, execute apenas o comando do passo **4**.
 
